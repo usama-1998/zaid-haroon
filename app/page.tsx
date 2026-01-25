@@ -571,74 +571,98 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
 
                 <div className="w-full md:w-1/2 aspect-square relative border border-white/10 bg-[#080808]/80 backdrop-blur-sm rounded-xl overflow-hidden group shadow-[0_0_50px_rgba(234,179,8,0.05)] p-8 flex flex-col">
                     {/* Background Grid */}
-                    <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:20px_20px]" />
+                    <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-                    <div className="relative z-10 flex-1 flex flex-col justify-end gap-2">
-                        {/* Chart Bars - 5 Year Projection */}
-                        <div className="flex justify-between items-end h-full px-4 pb-8 border-b border-white/20 relative">
-                            {/* Dashed Trend Line */}
-                            <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-20">
-                                <motion.path
-                                    d="M20,250 L100,200 L200,120 L300,80 L400,20"
-                                    fill="none"
-                                    stroke="url(#trendGradient)"
-                                    strokeWidth="2"
-                                    strokeDasharray="5,5"
-                                    initial={{ pathLength: 0 }}
-                                    whileInView={{ pathLength: 1 }}
-                                    transition={{ duration: 2, ease: "easeOut" }}
-                                />
-                                <defs>
-                                    <linearGradient id="trendGradient" x1="0" y1="0" x2="1" y2="0">
-                                        <stop offset="0%" stopColor="#EAB308" stopOpacity="0.2" />
-                                        <stop offset="100%" stopColor="#EAB308" stopOpacity="1" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
+                    {/* Chart Container */}
+                    <div className="relative z-10 flex-1 w-full h-full">
+                        <svg className="absolute inset-0 w-full h-full overflow-visible z-20" preserveAspectRatio="none" viewBox="0 0 100 100">
+                            {/* Market Average (Dashed) */}
+                            <path d="M0,90 Q50,85 100,80" fill="none" stroke="#333" strokeWidth="0.5" strokeDasharray="2,2" />
 
-                            {/* Step 1: Foundation (Aligned with 01) */}
-                            <div className="flex flex-col items-center gap-2 group/bar">
-                                <div className="text-[10px] text-gray-500 font-mono mb-1 group-hover/bar:text-white transition-colors">$0</div>
+                            {/* The Wealth Curve (Gold) */}
+                            <motion.path
+                                d="M0,90 C30,85 40,60 100,10"
+                                fill="none"
+                                stroke="#EAB308"
+                                strokeWidth="1.5"
+                                initial={{ pathLength: 0 }}
+                                whileInView={{ pathLength: 1 }}
+                                transition={{ duration: 2, ease: "easeOut" }}
+                                filter="url(#glow)"
+                            />
+                            <defs>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            {/* Hover Interaction Points (Invisible Hit Targets) */}
+                            {/* Step 1 Hit Area */}
+                            <rect x="0" y="0" width="33" height="100" fill="transparent"
+                                onMouseEnter={() => setActiveStep(0)}
+                                className="cursor-pointer"
+                            />
+
+                            {/* Step 2 Hit Area */}
+                            <rect x="33" y="0" width="33" height="100" fill="transparent"
+                                onMouseEnter={() => setActiveStep(1)}
+                                className="cursor-pointer"
+                            />
+
+                            {/* Step 3 Hit Area */}
+                            <rect x="66" y="0" width="34" height="100" fill="transparent"
+                                onMouseEnter={() => setActiveStep(2)}
+                                className="cursor-pointer"
+                            />
+
+                            {/* Active Point Indicator */}
+                            <motion.circle
+                                cx={activeStep === 0 ? "5" : activeStep === 1 ? "40" : "95"}
+                                cy={activeStep === 0 ? "88" : activeStep === 1 ? "60" : "10"}
+                                r="3"
+                                fill="#000"
+                                stroke="#EAB308"
+                                strokeWidth="1"
+                                animate={{
+                                    cx: activeStep === 0 ? 5 : activeStep === 1 ? 40 : 95,
+                                    cy: activeStep === 0 ? 88 : activeStep === 1 ? 60 : 10
+                                }}
+                            />
+                        </svg>
+
+                        {/* Floating Details Card (Heads Up Display) */}
+                        <div className="absolute top-4 left-4 z-30">
+                            <AnimatePresence mode="wait">
                                 <motion.div
-                                    initial={{ height: 0 }} whileInView={{ height: "40px" }} transition={{ duration: 1, delay: 0.2 }}
-                                    className={`w-12 bg-white/10 rounded-t-sm border border-white/20 ${activeStep === 0 ? 'bg-yellow-500/20 border-yellow-500' : ''} transition-all duration-500`}
-                                />
-                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 0 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>01</span>
-                            </div>
-
-                            {/* Step 2: Architecture (Aligned with 02) */}
-                            <div className="flex flex-col items-center gap-2 group/bar">
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
-                                    className="px-2 py-1 bg-green-500/10 border border-green-500/30 rounded text-[10px] text-green-500 mb-1"
+                                    key={activeStep}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: 10 }}
+                                    transition={{ duration: 0.2 }}
                                 >
-                                    +150%
+                                    <span className="text-[10px] text-yellow-500 font-mono uppercase tracking-widest mb-1 block">
+                                        Phase {activeStep + 1}
+                                    </span>
+                                    <h3 className="text-xl text-white font-serif leading-none mb-1">
+                                        {activeStep === 0 ? "35-Year Roadmap" : activeStep === 1 ? "Portfolio Arch." : "Strict Execution"}
+                                    </h3>
+                                    <p className="text-[10px] text-gray-400 font-mono">
+                                        {activeStep === 0 ? "Projecting 2050 Needs" : activeStep === 1 ? "Compounding Assets" : "Target: $2.4M Exit"}
+                                    </p>
                                 </motion.div>
-                                <motion.div
-                                    initial={{ height: 0 }} whileInView={{ height: "140px" }} transition={{ duration: 1, delay: 0.4 }}
-                                    className={`w-12 bg-white/10 rounded-t-sm border border-white/20 ${activeStep === 1 ? 'bg-yellow-500/20 border-yellow-500' : ''} transition-all duration-500`}
-                                />
-                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 1 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>02</span>
-                            </div>
-
-                            {/* Step 3: Exit (Aligned with 03) */}
-                            <div className="flex flex-col items-center gap-2 group/bar">
-                                <div className="text-xs text-white font-serif mb-1 group-hover/bar:text-yellow-500 transition-colors">$2.4M</div>
-                                <motion.div
-                                    initial={{ height: 0 }} whileInView={{ height: "240px" }} transition={{ duration: 1, delay: 0.6 }}
-                                    className={`w-12 bg-gradient-to-t from-yellow-600/20 to-yellow-500 rounded-t-sm border border-yellow-500 ${activeStep === 2 ? 'shadow-[0_0_30px_rgba(234,179,8,0.3)]' : ''} transition-all duration-500`}
-                                />
-                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 2 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>03</span>
-                            </div>
+                            </AnimatePresence>
                         </div>
                     </div>
 
-                    <div className="mt-6 flex justify-between items-center border-t border-white/10 pt-4">
+                    <div className="mt-4 flex justify-between items-center border-t border-white/10 pt-4">
                         <span className="text-[10px] uppercase tracking-widest text-gray-500">Projection Model</span>
-                        {/* Removed Live Data Text */}
                     </div>
 
-                    <div className="absolute top-6 right-6 text-right">
+                    <div className="absolute bottom-6 right-6 text-right">
                         <span className="block text-[10px] uppercase tracking-widest text-gray-400 mb-1">Your projected wealth over the next 5 years</span>
                     </div>
                 </div>
