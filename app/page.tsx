@@ -487,28 +487,12 @@ const Methodology = () => {
                 {/* Visualizer - Auto updating */}
                 <div className="w-full md:w-1/2 aspect-square relative border border-white/10 bg-[#080808]/80 backdrop-blur-sm rounded-xl p-8 shadow-2xl overflow-hidden group">
                     {/* Bespoke Grid / HUD Background inside the Visualizer */}
+                    <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-900/40 via-black to-black" />
                     <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:20px_20px]" />
                     <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-xl" />
                     <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-xl" />
 
-                    <div className="absolute top-4 left-4 flex flex-col gap-2">
-                        {/* Status Indicator with Grid Design */}
-                        <div className="relative overflow-hidden rounded-md border border-white/10 bg-[#0a0a0a]/90 backdrop-blur-md p-3 shadow-xl">
-                            <div className="absolute inset-0 z-0 opacity-20 bg-[linear-gradient(to_right,#ffffff05_2px,transparent_2px),linear-gradient(to_bottom,#ffffff05_2px,transparent_2px)] bg-[size:4px_4px]" />
-                            <div className="relative z-10 flex items-center gap-3">
-                                <div className={`relative flex h-3 w-3 items-center justify-center`}>
-                                    <div className={`absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75`}></div>
-                                    <div className={`relative inline-flex h-2 w-2 rounded-full bg-green-500`}></div>
-                                </div>
-                                <div className="flex flex-col leading-none">
-                                    <span className="text-[8px] font-mono font-bold uppercase tracking-widest text-gray-500 mb-1">Protocol Status</span>
-                                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-green-500">
-                                        Sequence Running
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <svg className="w-full h-full relative z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
                         <motion.path
