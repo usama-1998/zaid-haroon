@@ -1036,9 +1036,6 @@ const CTA = ({ onOpenContact }: { onOpenContact: () => void }) => {
 
             <div className="relative z-20 w-full max-w-5xl text-center p-12 md:p-20 border border-white/5 bg-black/50 backdrop-blur-sm rounded-sm">
                 <RevealText>
-                    <span className="inline-block py-1 px-3 border border-yellow-500/30 rounded-full bg-yellow-500/5 text-[10px] uppercase tracking-widest text-yellow-500 mb-8">
-                        Executive Private Client Service
-                    </span>
                     <h2 className="text-5xl md:text-8xl font-serif mb-8 tracking-tight text-white mix-blend-difference drop-shadow-2xl">
                         Begin Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Legacy.</span>
                     </h2>
