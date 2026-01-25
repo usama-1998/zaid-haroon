@@ -630,10 +630,10 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
                                     cx: activeStep === 0 ? 5 : activeStep === 1 ? 40 : 95,
                                     cy: activeStep === 0 ? 88 : activeStep === 1 ? 60 : 10
                                 }}
-                                r="4"
+                                r="2.5"
                                 fill="#000"
                                 stroke="#EAB308"
-                                strokeWidth="2"
+                                strokeWidth="1.5"
                                 className="drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]"
                             />
                         </svg>
