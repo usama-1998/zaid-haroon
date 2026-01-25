@@ -559,12 +559,13 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
     const [activeStep, setActiveStep] = useState(0);
 
     // Auto-play cycle
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setActiveStep((prev) => (prev + 1) % 3);
-        }, 5000); // 5 seconds per step
-        return () => clearInterval(timer);
-    }, []);
+    // Auto-step switching removed for manual control
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setActiveStep((prev) => (prev + 1) % steps.length);
+    //     }, 5000);
+    //     return () => clearInterval(interval);
+    // }, [steps.length]);
 
     return (
         <Section id="blueprint" className="bg-[#050505] min-h-screen py-32 overflow-hidden">
@@ -623,19 +624,32 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
                                 className="cursor-pointer"
                             />
 
-                            {/* Active Point Indicator */}
-                            <motion.circle
-                                cx={activeStep === 0 ? "5" : activeStep === 1 ? "40" : "95"}
-                                cy={activeStep === 0 ? "88" : activeStep === 1 ? "60" : "10"}
-                                r="3"
-                                fill="#000"
-                                stroke="#EAB308"
-                                strokeWidth="1"
+                            {/* Active Point Indicator - ELEGANT DIAMOND */}
+                            <motion.g
                                 animate={{
-                                    cx: activeStep === 0 ? 5 : activeStep === 1 ? 40 : 95,
-                                    cy: activeStep === 0 ? 88 : activeStep === 1 ? 60 : 10
+                                    x: activeStep === 0 ? 5 : activeStep === 1 ? 40 : 95,
+                                    y: activeStep === 0 ? 88 : activeStep === 1 ? 60 : 10
                                 }}
-                            />
+                            >
+                                {/* Outer Glow Ring */}
+                                <motion.circle
+                                    r="6"
+                                    fill="none"
+                                    stroke="#EAB308"
+                                    strokeWidth="0.5"
+                                    opacity="0.5"
+                                    animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                />
+                                {/* Diamond Shape */}
+                                <motion.path
+                                    d="M 0 -4 L 4 0 L 0 4 L -4 0 Z"
+                                    fill="#000"
+                                    stroke="#EAB308"
+                                    strokeWidth="1.5"
+                                    className="drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]"
+                                />
+                            </motion.g>
                         </svg>
 
                         {/* Floating Details Card (Heads Up Display) */}
