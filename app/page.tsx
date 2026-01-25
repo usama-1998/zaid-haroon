@@ -1029,9 +1029,11 @@ const FreeResource = () => {
 const CTA = ({ onOpenContact }: { onOpenContact: () => void }) => {
     return (
         <Section className="bg-[#050505] text-white min-h-[80vh] relative overflow-hidden flex items-center justify-center border-t border-white/10">
-            {/* Darker Architecture Background */}
-            <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_100%)] z-10" />
-            <div className="absolute inset-0 opacity-20 pointer-events-none z-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111), repeating-linear-gradient(45deg, #111 25%, #050505 25%, #050505 75%, #111 75%, #111)', backgroundPosition: '0 0, 10px 10px', backgroundSize: '20px 20px' }} />
+            {/* Background Image - Similar to Hero */}
+            <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1485628390568-3737df57b5a8?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-20" />
+
+            {/* Dark Overlay Gradient */}
+            <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.5)_0%,_#050505_100%)] z-10" />
 
             <div className="absolute top-12 left-12 w-32 h-32 border-l border-t border-white/20 opacity-50 z-10" />
             <div className="absolute bottom-12 right-12 w-32 h-32 border-r border-b border-white/20 opacity-50 z-10" />
