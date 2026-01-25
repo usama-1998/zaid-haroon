@@ -1075,7 +1075,6 @@ export default function App() {
                 <Marquee />
                 <Credentials />
                 <Profile />
-                <RealityCheck onOpenContact={() => setIsContactOpen(true)} />
                 <Methodology onOpenContact={() => setIsContactOpen(true)} />
                 <CaseStudies />
                 <FreeResource />
