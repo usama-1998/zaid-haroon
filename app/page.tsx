@@ -794,7 +794,21 @@ export default function App() {
 
             <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center mix-blend-difference text-white pointer-events-none">
                 <span className="font-bold tracking-tighter text-xl pointer-events-auto font-serif">ZH.</span>
-                <button onClick={() => setIsMenuOpen(true)} className="text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-black/10 backdrop-blur-sm px-6 py-3 rounded-full pointer-events-auto hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2">
+
+                {/* Desktop Menu */}
+                <div className="hidden md:flex items-center gap-8 pointer-events-auto">
+                    {['Methodology', 'Case Studies', 'About Zaid', 'Resources'].map((item) => (
+                        <a key={item} href="#" className="text-xs font-bold uppercase tracking-widest hover:text-yellow-500 transition-colors">
+                            {item}
+                        </a>
+                    ))}
+                    <button onClick={() => setIsContactOpen(true)} className="text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-white/5 hover:bg-white hover:text-black backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-300">
+                        Book Consultation
+                    </button>
+                </div>
+
+                {/* Mobile Menu Button */}
+                <button onClick={() => setIsMenuOpen(true)} className="md:hidden text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-black/10 backdrop-blur-sm px-6 py-3 rounded-full pointer-events-auto hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2">
                     <Menu className="w-3 h-3" /> Menu
                 </button>
             </nav>
