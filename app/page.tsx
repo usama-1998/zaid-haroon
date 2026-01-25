@@ -781,8 +781,10 @@ const CaseStudies = () => {
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none" />
 
             <div className="w-full relative z-10">
-                <div className="flex justify-center mb-12">
-                    <span className="text-yellow-500 font-mono text-xs uppercase tracking-[0.3em]">Declassified Operations</span>
+                <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-16 text-center">
+                    <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-4 block">Proven Results</span>
+                    <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">Case Studies</h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto font-light">Real scenarios. Real numbers. The application of the blueprint in live market conditions.</p>
                 </div>
 
                 <div className="flex w-full overflow-hidden mask-linear-fade">
@@ -794,26 +796,41 @@ const CaseStudies = () => {
                         {marqueeItems.map((item, index) => (
                             <div
                                 key={`${item.title}-${index}`}
-                                className="w-[300px] md:w-[400px] flex-shrink-0 bg-[#111] border border-white/5 p-8 relative group hover:border-yellow-500/30 transition-colors cursor-pointer"
+                                className="w-[300px] md:w-[400px] flex-shrink-0 h-[500px] bg-[#111] overflow-hidden rounded-sm border border-white/5 relative group hover:border-yellow-500/50 transition-all duration-500 cursor-pointer"
                                 onClick={() => setSelectedStudy(item)}
                             >
-                                <div className="absolute top-4 right-4">
-                                    <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-yellow-500 transition-colors" />
+                                {/* Background Image */}
+                                <div className="absolute inset-0">
+                                    <img src={item.image} alt={item.title} className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 group-hover:opacity-20 transition-all duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                                 </div>
-                                <span className="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-2 block">{item.category}</span>
-                                <h3 className="text-2xl font-serif text-white mb-4 italic">{item.title}</h3>
 
-                                <div className="mt-4 opacity-100 transition-opacity duration-300">
-                                    <div>
-                                        <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Problem</span>
-                                        <p className="text-sm text-gray-300 font-light line-clamp-1">{item.problem}</p>
+                                {/* Hover Overlay */}
+                                <div className="absolute inset-0 bg-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
+                                    <div className="mb-auto flex justify-between items-start">
+                                        <div className="bg-black/50 backdrop-blur-md px-3 py-1 rounded border border-white/10">
+                                            <span className="text-yellow-500 text-[10px] font-bold uppercase tracking-widest">{item.category}</span>
+                                        </div>
+                                        <ArrowUpRight className="w-5 h-5 text-white/50 group-hover:text-yellow-500 transition-colors" />
                                     </div>
-                                    <div className="mt-2">
-                                        <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Outcome</span>
-                                        <p className="text-sm text-white font-medium">{item.result}</p>
+
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                        <h3 className="text-2xl font-serif text-white mb-4 italic">{item.title}</h3>
+
+                                        <div className="mt-4 opacity-100 transition-opacity duration-300 space-y-2">
+                                            <div>
+                                                <span className="block text-[10px] text-gray-400 uppercase tracking-widest">Problem</span>
+                                                <p className="text-sm text-gray-300 font-light line-clamp-1">{item.problem}</p>
+                                            </div>
+                                            <div>
+                                                <span className="block text-[10px] text-green-500 uppercase tracking-widest">Outcome</span>
+                                                <p className="text-lg text-white font-medium">{item.result}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                             </div>
                         ))}
                     </motion.div>
