@@ -624,37 +624,18 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
                                 className="cursor-pointer"
                             />
 
-                            {/* Active Point Indicator - CLASSIC CUT DIAMOND */}
-                            <g>
-                                {/* Diamond Shape - Detailed Side View */}
-                                <motion.path
-                                    animate={{
-                                        d: activeStep === 0
-                                            ? "M 2 85 L 8 85 L 10 88 L 5 94 L 0 88 Z"  /* (5,88) Center */
-                                            : activeStep === 1
-                                                ? "M 37 57 L 43 57 L 45 60 L 40 66 L 35 60 Z" /* (40,60) Center */
-                                                : "M 92 7 L 98 7 L 100 10 L 95 16 L 90 10 Z" /* (95,10) Center */
-                                    }}
-                                    fill="#000"
-                                    stroke="#EAB308"
-                                    strokeWidth="1"
-                                    className="drop-shadow-[0_0_10px_rgba(234,179,8,1)]"
-                                />
-                                {/* Inner Facet Line (Top shine) */}
-                                <motion.path
-                                    animate={{
-                                        d: activeStep === 0
-                                            ? "M 2 85 L 5 88 L 8 85"
-                                            : activeStep === 1
-                                                ? "M 37 57 L 40 60 L 43 57"
-                                                : "M 92 7 L 95 10 L 98 7"
-                                    }}
-                                    fill="none"
-                                    stroke="#EAB308"
-                                    strokeWidth="0.5"
-                                    opacity="0.8"
-                                />
-                            </g>
+                            {/* Active Point Indicator - MINIMALIST DOT */}
+                            <motion.circle
+                                animate={{
+                                    cx: activeStep === 0 ? 5 : activeStep === 1 ? 40 : 95,
+                                    cy: activeStep === 0 ? 88 : activeStep === 1 ? 60 : 10
+                                }}
+                                r="4"
+                                fill="#000"
+                                stroke="#EAB308"
+                                strokeWidth="2"
+                                className="drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]"
+                            />
                         </svg>
 
                         {/* Floating Details Card (Heads Up Display) */}
