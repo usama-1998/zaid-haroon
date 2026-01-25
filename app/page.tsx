@@ -547,11 +547,15 @@ const Methodology = () => {
 
                 {/* Visualizer - Redesigned Graph */}
                 <div className="w-full md:w-1/2 aspect-square relative border border-white/10 bg-[#080808]/80 backdrop-blur-sm rounded-xl overflow-hidden group shadow-[0_0_50px_rgba(234,179,8,0.05)]">
-                    {/* HUD Borders */}
-                    <div className="absolute top-0 left-0 w-8 h-8 border-l border-t border-yellow-500/30" />
-                    <div className="absolute top-0 right-0 w-8 h-8 border-r border-t border-yellow-500/30" />
-                    <div className="absolute bottom-0 left-0 w-8 h-8 border-l border-b border-yellow-500/30" />
-                    <div className="absolute bottom-0 right-0 w-8 h-8 border-r border-b border-yellow-500/30" />
+                    {/* Bespoke Grid / HUD Background inside the Visualizer */}
+                    <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-yellow-900/40 via-black to-black" />
+                    <motion.div
+                        animate={{ backgroundPosition: ["0px 0px", "40px 40px"] }}
+                        transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                        className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"
+                    />
+                    <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-xl" />
+                    <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-xl" />
 
                     {/* Grid Background */}
                     <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#444_1px,transparent_1px),linear-gradient(to_bottom,#444_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -915,19 +919,41 @@ const FreeResource = () => {
                         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
                         animate={{ y: [0, -15, 0], rotateZ: [0, 2, 0] }}
                         transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                        className="w-[350px] h-[500px] bg-[#0a0a0a] border border-yellow-500/20 rounded-lg shadow-2xl relative group"
+                        className="relative w-[300px] h-[450px] group cursor-pointer"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent z-10" />
-                        <div className="absolute top-8 left-8">
-                            <div className="w-8 h-8 rounded-full border border-yellow-500/50 flex items-center justify-center mb-4"><Award className="w-4 h-4 text-yellow-500" /></div>
-                            <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Classified</span>
-                            <span className="font-serif text-2xl text-white">Wealth<br />Architecture</span>
+                        {/* Front Cover */}
+                        <div className="absolute inset-0 bg-[#0a0a0a] border border-yellow-500/20 rounded-sm shadow-2xl flex flex-col p-8 backface-hidden" style={{ transform: "translateZ(25px)" }}>
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent z-10" />
+                            <div className="mt-8 relative z-20">
+                                <div className="w-8 h-8 rounded-full border border-yellow-500/50 flex items-center justify-center mb-4"><Award className="w-4 h-4 text-yellow-500" /></div>
+                                <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Classified</span>
+                                <span className="font-serif text-3xl text-white leading-tight">Wealth<br />Architecture</span>
+                            </div>
+                            <div className="mt-auto text-right relative z-20">
+                                <span className="font-serif text-6xl text-white/5 font-bold block leading-none">01</span>
+                                <span className="font-mono text-[10px] text-yellow-500 uppercase tracking-[0.3em]">Edition</span>
+                            </div>
+                            {/* Hover Sheen */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-30" />
                         </div>
-                        <div className="absolute bottom-8 right-8 text-right">
-                            <span className="font-serif text-6xl text-white/5 font-bold block leading-none">01</span>
-                            <span className="font-mono text-[10px] text-yellow-500 uppercase tracking-[0.3em]">Edition</span>
+
+                        {/* Back Cover */}
+                        <div className="absolute inset-0 bg-[#0a0a0a] border border-white/5 rounded-sm" style={{ transform: "translateZ(-25px) rotateY(180deg)" }} />
+
+                        {/* Spine (Left) */}
+                        <div className="absolute top-0 bottom-0 w-[50px] bg-[#050505] border-l border-white/5" style={{ transform: "rotateY(-90deg) translateZ(25px)", left: 0 }}>
+                            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 whitespace-nowrap text-xs font-mono text-gray-600 uppercase tracking-widest">Confidential Dossier</span>
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-20" />
+
+                        {/* Pages (Right) */}
+                        <div className="absolute top-2 bottom-2 w-[48px] bg-[#fff] opacity-90" style={{ transform: "rotateY(90deg) translateZ(273px)", right: 0, background: "linear-gradient(to right, #ccc 1px, transparent 1px)", backgroundSize: "4px 100%" }} />
+
+                        {/* Pages (Top) */}
+                        <div className="absolute left-2 right-2 h-[48px] bg-[#fff] opacity-90" style={{ transform: "rotateX(90deg) translateZ(25px)", top: 0, background: "linear-gradient(to bottom, #ccc 1px, transparent 1px)", backgroundSize: "100% 4px" }} />
+
+                        {/* Pages (Bottom) */}
+                        <div className="absolute left-2 right-2 h-[48px] bg-[#fff] opacity-90" style={{ transform: "rotateX(-90deg) translateZ(423px)", bottom: 0, background: "linear-gradient(to bottom, #ccc 1px, transparent 1px)", backgroundSize: "100% 4px" }} />
+
                     </motion.div>
                 </div>
             </div>
