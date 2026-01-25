@@ -724,7 +724,7 @@ const CaseStudies = () => {
             title: "Entry Level Prime",
             problem: "Priced out of OCR.",
             result: "Secured Undervalued D15",
-            image: "https://images.unsplash.com/photo-1600596542815-3ad19fb812a7?q=80&w=2000&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2000&auto=format&fit=crop"
         },
         {
             id: "05",
