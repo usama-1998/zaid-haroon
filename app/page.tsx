@@ -251,16 +251,7 @@ const Hero = ({ onOpenVideo, onOpenContact }: { onOpenVideo: () => void, onOpenC
             />
 
             <div className="z-20 container mx-auto px-4 relative flex flex-col items-center justify-center h-full text-center">
-                {/* Animated Badge */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="mb-8 border border-white/10 bg-white/5 backdrop-blur-md px-4 py-1 rounded-full flex items-center gap-2"
-                >
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-white/70">Top 1% Wealth Architect</span>
-                </motion.div>
+
 
                 <h1 className="font-serif text-6xl md:text-8xl lg:text-[10rem] leading-[0.85] font-medium tracking-tighter mix-blend-difference text-white mb-8 relative">
                     <motion.div initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 1.5, ease: "easeInOut" }} className="absolute top-1/2 left-0 h-px bg-white/10 -translate-y-1/2 w-full" />
@@ -795,22 +786,26 @@ export default function App() {
             <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center mix-blend-difference text-white pointer-events-none">
                 <span className="font-bold tracking-tighter text-xl pointer-events-auto font-serif">ZH.</span>
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8 pointer-events-auto">
+                {/* Desktop Menu - Centered */}
+                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 pointer-events-auto">
                     {['Methodology', 'Case Studies', 'About Zaid', 'Resources'].map((item) => (
                         <a key={item} href="#" className="text-xs font-bold uppercase tracking-widest hover:text-yellow-500 transition-colors">
                             {item}
                         </a>
                     ))}
-                    <button onClick={() => setIsContactOpen(true)} className="text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-white/5 hover:bg-white hover:text-black backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-300">
-                        Book Consultation
-                    </button>
                 </div>
 
-                {/* Mobile Menu Button */}
-                <button onClick={() => setIsMenuOpen(true)} className="md:hidden text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-black/10 backdrop-blur-sm px-6 py-3 rounded-full pointer-events-auto hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2">
-                    <Menu className="w-3 h-3" /> Menu
-                </button>
+                {/* Right Actions */}
+                <div className="flex items-center pointer-events-auto">
+                    <button onClick={() => setIsContactOpen(true)} className="hidden md:block text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-white/5 hover:bg-white hover:text-black backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-300">
+                        Book Consultation
+                    </button>
+
+                    {/* Mobile Menu Button */}
+                    <button onClick={() => setIsMenuOpen(true)} className="md:hidden text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-black/10 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2">
+                        <Menu className="w-3 h-3" /> Menu
+                    </button>
+                </div>
             </nav>
 
             <main>
