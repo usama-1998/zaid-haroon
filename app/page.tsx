@@ -795,19 +795,26 @@ const CaseStudies = () => {
                     >
                         {/* Wavy Connection Line - BACKGROUND */}
                         <div className="absolute inset-0 top-1/2 -translate-y-1/2 z-0 pointer-events-none">
-                            <svg className="w-full h-[200px] -translate-y-1/2 opacity-20" preserveAspectRatio="none">
-                                <path
-                                    d={`M 0 100 
-                                        ${marqueeItems.map((_, i) => {
-                                        const x = (i * 432) + 200; // Approx center of each card (400w + 32gap)
-                                        const y = i % 2 === 0 ? 50 : 150; // Alternate up/down
-                                        return `Q ${x - 100} ${y} ${x} 100 T ${x + 216} 100`;
-                                    }).join(" ")}`}
-                                    fill="none"
-                                    stroke="#EAB308"
-                                    strokeWidth="2"
-                                    className="drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]"
-                                />
+                            <svg className="w-full h-[400px] -translate-y-1/2 opacity-30" preserveAspectRatio="none">
+                                {[0, 1, 2, 3, 4].map((lineIndex) => (
+                                    <path
+                                        key={lineIndex}
+                                        d={`M 0 ${100 + (lineIndex * 20)} 
+                                            ${marqueeItems.map((_, i) => {
+                                            const x = (i * 432) + 200;
+                                            // Randomized variations for "random waveness"
+                                            const baseY = 100 + (lineIndex * 20);
+                                            const amplitude = 50 + (lineIndex * 10);
+                                            const y = i % 2 === 0 ? baseY - amplitude : baseY + amplitude;
+                                            return `Q ${x - 100} ${y} ${x} ${baseY} T ${x + 216} ${baseY}`;
+                                        }).join(" ")}`}
+                                        fill="none"
+                                        stroke="#EAB308"
+                                        strokeWidth={lineIndex === 2 ? 1.5 : 0.5} // Middle line slightly thicker
+                                        opacity={0.3 + (lineIndex * 0.1)}
+                                        className="drop-shadow-[0_0_5px_rgba(234,179,8,0.3)]"
+                                    />
+                                ))}
                             </svg>
                         </div>
 
