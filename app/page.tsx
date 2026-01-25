@@ -115,50 +115,20 @@ const VideoModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void 
     </AnimatePresence>
 );
 
-const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => (
-    <AnimatePresence>
-        {isOpen && (
-            <motion.div
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
-            >
-                <motion.div
-                    initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 50, opacity: 0 }}
-                    className="w-full max-w-lg bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative rounded-sm shadow-2xl"
-                >
-                    <button onClick={onClose} className="absolute top-6 right-6 text-white/30 hover:text-white transition-colors"><X className="w-6 h-6" /></button>
-
-                    <div className="text-center mb-8">
-                        <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-2 block">Priority Access</span>
-                        <h3 className="text-3xl font-serif text-white">Strategy Session</h3>
-                    </div>
-
-                    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                        <div>
-                            <label className="block text-xs uppercase text-gray-500 mb-2">Full Name</label>
-                            <input type="text" className="w-full bg-white/5 border border-white/10 p-4 text-white focus:border-yellow-500 outline-none transition-colors" placeholder="Enter your name" />
-                        </div>
-                        <div>
-                            <label className="block text-xs uppercase text-gray-500 mb-2">Email Address</label>
-                            <input type="email" className="w-full bg-white/5 border border-white/10 p-4 text-white focus:border-yellow-500 outline-none transition-colors" placeholder="name@example.com" />
-                        </div>
-                        <div>
-                            <label className="block text-xs uppercase text-gray-500 mb-2">Current Asset Status</label>
-                            <select className="w-full bg-white/5 border border-white/10 p-4 text-white focus:border-yellow-500 outline-none transition-colors appearance-none">
                                 <option>Select an option...</option>
                                 <option>HDB Owner</option>
                                 <option>Private Property Owner</option>
                                 <option>Multiple Properties</option>
                                 <option>First Time Buyer</option>
-                            </select>
-                        </div>
+                            </select >
+                        </div >
                         <PremiumButton className="w-full">Submit Application</PremiumButton>
                         <p className="text-[10px] text-center text-gray-600">Strict confidentiality. No-Refund Policy applies to engaged services.</p>
-                    </form>
-                </motion.div>
-            </motion.div>
+                    </form >
+                </motion.div >
+            </motion.div >
         )}
-    </AnimatePresence>
+    </AnimatePresence >
 );
 
 const CaseStudyModal = ({ isOpen, onClose, data }: { isOpen: boolean, onClose: () => void, data: any }) => (
@@ -578,17 +548,17 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
                                 </defs>
                             </svg>
 
-                            {/* Year 1 */}
+                            {/* Step 1: Foundation (Aligned with 01) */}
                             <div className="flex flex-col items-center gap-2 group/bar">
                                 <div className="text-[10px] text-gray-500 font-mono mb-1 group-hover/bar:text-white transition-colors">$0</div>
                                 <motion.div
                                     initial={{ height: 0 }} whileInView={{ height: "40px" }} transition={{ duration: 1, delay: 0.2 }}
                                     className={`w-12 bg-white/10 rounded-t-sm border border-white/20 ${activeStep === 0 ? 'bg-yellow-500/20 border-yellow-500' : ''} transition-all duration-500`}
                                 />
-                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 0 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>Year 1</span>
+                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 0 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>01</span>
                             </div>
 
-                            {/* Year 3 */}
+                            {/* Step 2: Architecture (Aligned with 02) */}
                             <div className="flex flex-col items-center gap-2 group/bar">
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
@@ -600,27 +570,24 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
                                     initial={{ height: 0 }} whileInView={{ height: "140px" }} transition={{ duration: 1, delay: 0.4 }}
                                     className={`w-12 bg-white/10 rounded-t-sm border border-white/20 ${activeStep === 1 ? 'bg-yellow-500/20 border-yellow-500' : ''} transition-all duration-500`}
                                 />
-                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 1 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>Year 3</span>
+                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 1 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>02</span>
                             </div>
 
-                            {/* Year 5 */}
+                            {/* Step 3: Exit (Aligned with 03) */}
                             <div className="flex flex-col items-center gap-2 group/bar">
                                 <div className="text-xs text-white font-serif mb-1 group-hover/bar:text-yellow-500 transition-colors">$2.4M</div>
                                 <motion.div
                                     initial={{ height: 0 }} whileInView={{ height: "240px" }} transition={{ duration: 1, delay: 0.6 }}
                                     className={`w-12 bg-gradient-to-t from-yellow-600/20 to-yellow-500 rounded-t-sm border border-yellow-500 ${activeStep === 2 ? 'shadow-[0_0_30px_rgba(234,179,8,0.3)]' : ''} transition-all duration-500`}
                                 />
-                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 2 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>Year 5</span>
+                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 2 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>03</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="mt-6 flex justify-between items-center border-t border-white/10 pt-4">
                         <span className="text-[10px] uppercase tracking-widest text-gray-500">Projection Model</span>
-                        <div className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                            <span className="text-[10px] text-white font-mono">Live Data</span>
-                        </div>
+                        {/* Removed Live Data Text */}
                     </div>
 
                     <div className="absolute top-6 right-6 text-right">
@@ -778,7 +745,7 @@ const CaseStudies = () => {
                                     <span className="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-2 block">{item.category}</span>
                                     <h3 className="text-2xl font-serif text-white mb-4 italic">{item.title}</h3>
 
-                                    <div className="space-y-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 border-t border-white/10 pt-4">
+                                    <div className="mt-4 opacity-100 transition-opacity duration-300">
                                         <div>
                                             <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Problem</span>
                                             <p className="text-sm text-gray-300 font-light line-clamp-1">{item.problem}</p>
@@ -1024,7 +991,7 @@ export default function App() {
 
             <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center mix-blend-difference text-white pointer-events-none">
                 {/* Semi-transparent background for sticky menu */}
-                <div className="absolute inset-0 bg-black/50 backdrop-blur-md pointer-events-none -z-10 border-b border-white/5" />
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-md pointer-events-none -z-10" />
 
                 <span className="font-bold tracking-tighter text-xl pointer-events-auto font-serif">ZH.</span>
 
