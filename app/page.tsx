@@ -161,6 +161,71 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
     </AnimatePresence>
 );
 
+const CaseStudyModal = ({ isOpen, onClose, data }: { isOpen: boolean, onClose: () => void, data: any }) => (
+    <AnimatePresence>
+        {isOpen && data && (
+            <motion.div
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 md:p-12"
+            >
+                <div className="absolute inset-0 bg-black/50" onClick={onClose} />
+                <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
+                    className="w-full max-w-4xl h-[90vh] md:h-auto md:aspect-[16/9] bg-[#0a0a0a] border border-white/10 relative rounded-sm shadow-2xl overflow-y-auto md:overflow-hidden flex flex-col md:flex-row"
+                >
+                    <button onClick={onClose} className="absolute top-4 right-4 z-50 text-white/50 hover:text-white transition-colors bg-black/50 p-2 rounded-full"><X className="w-6 h-6" /></button>
+
+                    {/* Left: Image */}
+                    <div className="w-full md:w-1/2 relative h-64 md:h-full">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+                        <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
+                        <div className="absolute bottom-8 left-8 z-20">
+                            <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-2 block">{data.category}</span>
+                            <h3 className="text-3xl md:text-4xl font-serif text-white">{data.title}</h3>
+                        </div>
+                    </div>
+
+                    {/* Right: Content */}
+                    <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-[#0a0a0a]">
+                        <div className="space-y-8">
+                            <div>
+                                <h4 className="text-sm font-bold uppercase tracking-widest text-white mb-2 flex items-center gap-2">
+                                    <span className="w-1 h-4 bg-red-500" /> The Problem
+                                </h4>
+                                <p className="text-gray-400 font-light leading-relaxed">{data.problem}</p>
+                            </div>
+
+                            <div>
+                                <h4 className="text-sm font-bold uppercase tracking-widest text-white mb-2 flex items-center gap-2">
+                                    <span className="w-1 h-4 bg-yellow-500" /> The Strategy
+                                </h4>
+                                <p className="text-gray-400 font-light leading-relaxed">
+                                    We implemented a precision-timed decoupling strategy to unlock CPF funds and avoid ABSD, then leveraged <span className="text-white">asset styling</span> to achieve a record-price exit.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h4 className="text-sm font-bold uppercase tracking-widest text-white mb-2 flex items-center gap-2">
+                                    <span className="w-1 h-4 bg-green-500" /> The Result
+                                </h4>
+                                <p className="text-2xl font-serif text-white">{data.result}</p>
+                            </div>
+
+                            <div className="pt-8 border-t border-white/10">
+                                <PremiumButton onClick={onClose} className="w-full text-xs">Analyze Similar Cases</PremiumButton>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </motion.div>
+        )}
+    </AnimatePresence>
+);
+
+/* -------------------------------------------------------------------------- */
+/* MENU OVERLAY                                      */
+/* -------------------------------------------------------------------------- */
+
 const MenuOverlay = ({ isOpen, onClose, onOpenContact }: { isOpen: boolean, onClose: () => void, onOpenContact: () => void }) => (
     <AnimatePresence>
         {isOpen && (
@@ -172,13 +237,18 @@ const MenuOverlay = ({ isOpen, onClose, onOpenContact }: { isOpen: boolean, onCl
                     <X className="w-10 h-10" />
                 </button>
                 <nav className="flex flex-col gap-8 text-center">
-                    {['Methodology', 'Case Studies', 'About Zaid', 'Resources'].map((item, i) => (
+                    {[
+                        { name: 'The Blueprint', link: '#blueprint' },
+                        { name: 'Case Studies', link: '#case-studies' },
+                        { name: 'About Zaid', link: '#profile' },
+                        { name: 'Resources', link: '#resources' }
+                    ].map((item, i) => (
                         <motion.a
-                            key={item} href="#"
+                            key={item.name} href={item.link} onClick={onClose}
                             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: i * 0.1 }}
                             className="text-4xl md:text-6xl font-serif text-white hover:text-yellow-500 transition-colors"
                         >
-                            {item}
+                            {item.name}
                         </motion.a>
                     ))}
                     <motion.div
@@ -469,52 +539,100 @@ const Methodology = () => {
     }, []);
 
     return (
-        <Section className="bg-[#050505] min-h-screen py-32 overflow-hidden">
+        <Section id="blueprint" className="bg-[#050505] min-h-screen py-32 overflow-hidden">
             {/* Animated Radar Grid */}
             <div className="absolute inset-0 z-0 opacity-20 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem]" />
 
             <div className="w-full max-w-7xl relative z-10 flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-                {/* Visualizer - Auto updating */}
-                <div className="w-full md:w-1/2 aspect-square relative border border-white/10 bg-[#080808]/80 backdrop-blur-sm rounded-xl p-8 shadow-2xl overflow-hidden group">
-                    {/* Bespoke Grid / HUD Background inside the Visualizer */}
-                    <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-yellow-900/40 via-black to-black" />
-                    <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:20px_20px]" />
-                    <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-xl" />
-                    <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-xl" />
+
+                {/* Visualizer - Redesigned Graph */}
+                <div className="w-full md:w-1/2 aspect-square relative border border-white/10 bg-[#080808]/80 backdrop-blur-sm rounded-xl overflow-hidden group shadow-[0_0_50px_rgba(234,179,8,0.05)]">
+                    {/* HUD Borders */}
+                    <div className="absolute top-0 left-0 w-8 h-8 border-l border-t border-yellow-500/30" />
+                    <div className="absolute top-0 right-0 w-8 h-8 border-r border-t border-yellow-500/30" />
+                    <div className="absolute bottom-0 left-0 w-8 h-8 border-l border-b border-yellow-500/30" />
+                    <div className="absolute bottom-0 right-0 w-8 h-8 border-r border-b border-yellow-500/30" />
+
+                    {/* Grid Background */}
+                    <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#444_1px,transparent_1px),linear-gradient(to_bottom,#444_1px,transparent_1px)] bg-[size:40px_40px]" />
+
+                    {/* Chart Container */}
+                    <div className="absolute inset-8 z-10">
+                        <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
+                            {/* Axes */}
+                            <line x1="0" y1="100" x2="100" y2="100" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
+                            <line x1="0" y1="0" x2="0" y2="100" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
+
+                            {/* Market Average Line (Flat/Slow) */}
+                            <motion.path
+                                d="M0,90 Q50,85 100,80"
+                                fill="none"
+                                stroke="#4B5563"
+                                strokeWidth="1"
+                                strokeDasharray="4 4"
+                                initial={{ pathLength: 0 }}
+                                whileInView={{ pathLength: 1 }}
+                                transition={{ duration: 2 }}
+                            />
+                            <text x="95" y="75" className="text-[3px] fill-gray-500 font-mono text-right" textAnchor="end">Market Average</text>
 
 
+                            {/* Strategy Line (Exponential) */}
+                            <motion.path
+                                d="M0,90 C30,85 60,60 100,10"
+                                fill="none"
+                                stroke="#EAB308"
+                                strokeWidth="2"
+                                initial={{ pathLength: 0 }}
+                                whileInView={{ pathLength: 1 }}
+                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                            />
 
-                    <svg className="w-full h-full relative z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        <motion.path
-                            d="M10,90 L30,70 L50,80 L90,20"
-                            fill="none"
-                            stroke="#EAB308"
-                            strokeWidth="0.8"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: activeStep === 0 ? 0.33 : activeStep === 1 ? 0.66 : 1 }}
-                            transition={{ duration: 1.5, ease: "easeInOut" }}
-                        />
-                        <motion.path d="M10,90 H90 V90" fill="none" stroke="#333" strokeWidth="0.5" />
+                            {/* Area under curve */}
+                            <motion.path
+                                d="M0,90 C30,85 60,60 100,10 V100 H0 Z"
+                                fill="url(#gradientGold)"
+                                className="opacity-20"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 0.2 }}
+                                transition={{ duration: 1, delay: 0.5 }}
+                            />
+                            <defs>
+                                <linearGradient id="gradientGold" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stopColor="#EAB308" />
+                                    <stop offset="100%" stopColor="transparent" />
+                                </linearGradient>
+                            </defs>
 
-                        {/* Pulsing Nodes */}
-                        <motion.circle cx="10" cy="90" r="3" fill="#EAB308" animate={{ scale: activeStep >= 0 ? 1 : 0 }} />
-                        <motion.circle cx="50" cy="80" r="3" fill="#EAB308" animate={{ scale: activeStep >= 1 ? 1 : 0 }} transition={{ delay: 0.2 }} />
-                        <motion.circle cx="90" cy="20" r="3" fill="#EAB308" animate={{ scale: activeStep >= 2 ? 1 : 0 }} transition={{ delay: 0.4 }} />
-                    </svg>
+                            {/* Highlight Points based on Active Step */}
+                            {/* Step 1: Foundation */}
+                            <motion.circle cx="0" cy="90" r="2" fill="#EAB308" stroke="black" strokeWidth="0.5" animate={{ scale: activeStep >= 0 ? 1 : 0.5, opacity: activeStep >= 0 ? 1 : 0.5 }} />
+                            {/* Step 2: Acceleration */}
+                            <motion.circle cx="50" cy="70" r="2" fill="#EAB308" stroke="black" strokeWidth="0.5" animate={{ scale: activeStep >= 1 ? 1 : 0.5, opacity: activeStep >= 1 ? 0.5 : 0 }} />
+                            {/* Step 3: Target */}
+                            <motion.circle cx="100" cy="10" r="3" fill="#EAB308" stroke="white" strokeWidth="1" animate={{ scale: activeStep >= 2 ? 1.5 : 1 }} />
 
-                    <div className="absolute bottom-8 right-8 text-right z-10">
-                        <AnimatePresence mode="wait">
-                            <motion.span
-                                key={activeStep}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                className="block text-5xl font-mono text-white font-bold tracking-tighter tabular-nums"
+                            {/* Floating HUD Label attached to Active Point */}
+                            <motion.g
+                                animate={{
+                                    x: activeStep === 0 ? 5 : activeStep === 1 ? 55 : 80,
+                                    y: activeStep === 0 ? 80 : activeStep === 1 ? 60 : 15
+                                }}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
                             >
-                                {activeStep === 0 ? "35 YRS" : activeStep === 1 ? "+125%" : "$2.0M"}
-                            </motion.span>
-                        </AnimatePresence>
-                        <span className="text-[10px] text-yellow-500 uppercase tracking-widest">Projection Target</span>
+                                <rect width="35" height="12" fill="#111" stroke="#333" strokeWidth="0.2" rx="1" />
+                                <text x="17.5" y="8" textAnchor="middle" className="text-[4px] fill-white font-mono font-bold">
+                                    {activeStep === 0 ? "START: $0" : activeStep === 1 ? "GROWTH: +150%" : "TARGET: $2.5M"}
+                                </text>
+                            </motion.g>
+                        </svg>
+                    </div>
+
+                    <div className="absolute bottom-6 left-6 z-20">
+                        <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                            <span className="text-[10px] text-white/50 font-mono tracking-widest uppercase">System Active</span>
+                        </div>
                     </div>
                 </div>
 
@@ -548,7 +666,141 @@ const Methodology = () => {
                         isActive={activeStep === 2}
                         onSelect={() => setActiveStep(2)}
                     />
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="mt-8"
+                    >
+                        <PremiumButton>Start Your Blueprint</PremiumButton>
+                    </motion.div>
                 </div>
+            </div>
+        </Section>
+    );
+};
+
+/* -------------------------------------------------------------------------- */
+/* CASE STUDIES SECTION (NEW)                                    */
+/* -------------------------------------------------------------------------- */
+
+const CaseStudies = () => {
+    const [selectedCase, setSelectedCase] = useState<any>(null);
+
+    const cases = [
+        {
+            id: "01",
+            category: "HDB Upgrader",
+            title: "The 5-Year Pivot",
+            problem: "Stuck in stagnant resale flat.",
+            result: "+$450K Asset Growth",
+            image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop"
+        },
+        {
+            id: "02",
+            category: "Investor",
+            title: "Decoupling Strategy",
+            problem: "High ABSD barrier entry.",
+            result: "Saved $112K in Tax",
+            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop"
+        },
+        {
+            id: "03",
+            category: "Retiree",
+            title: "Right-Sizing Legacy",
+            problem: "Asset rich, cash poor.",
+            result: "$5K/mo Passive Income",
+            image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2000&auto=format&fit=crop"
+        },
+        // Duplicate for loop
+        {
+            id: "04",
+            category: "First Home",
+            title: "Entry Level Prime",
+            problem: "Priced out of OCR.",
+            result: "Secured Undervalued D15",
+            image: "https://images.unsplash.com/photo-1600596542815-3ad19fb812a7?q=80&w=2000&auto=format&fit=crop"
+        },
+        {
+            id: "05",
+            category: "Legacy",
+            title: "Multi-Gen Wealth",
+            problem: "Passing assets efficiently.",
+            result: "Trust Structure Setup",
+            image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2000&auto=format&fit=crop"
+        },
+        {
+            id: "06",
+            category: "HDB Upgrader",
+            title: "The 5-Year Pivot",
+            problem: "Stuck in stagnant resale flat.",
+            result: "+$450K Asset Growth",
+            image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop"
+        },
+    ];
+
+    return (
+        <Section id="case-studies" className="bg-black py-32 border-t border-white/5 px-0 md:px-0">
+            <CaseStudyModal isOpen={!!selectedCase} onClose={() => setSelectedCase(null)} data={selectedCase} />
+
+            <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+                <div className="mb-20 text-center">
+                    <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-4 block">Proven Results</span>
+                    <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">Case Studies</h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto font-light">Real scenarios. Real numbers. The application of the blueprint in live market conditions.</p>
+                </div>
+            </div>
+
+            <div className="w-full overflow-hidden flex">
+                <motion.div
+                    className="flex gap-6 pl-6"
+                    animate={{ x: [0, -1000] }}
+                    transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+                >
+                    {[...cases, ...cases].map((item, i) => (
+                        <div
+                            key={i}
+                            onClick={() => setSelectedCase(item)}
+                            className="group flex-shrink-0 relative h-[500px] w-[350px] md:w-[400px] bg-[#111] overflow-hidden rounded-sm border border-white/5 hover:border-yellow-500/50 transition-all duration-500 cursor-pointer"
+                        >
+                            {/* Background Image */}
+                            <div className="absolute inset-0">
+                                <img src={item.image} alt={item.title} className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 group-hover:opacity-20 transition-all duration-700" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                            </div>
+
+                            {/* Hover Overlay */}
+                            <div className="absolute inset-0 bg-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                            {/* Content */}
+                            <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                                <div className="mb-auto flex justify-between items-start">
+                                    <span className="font-mono text-xs text-white/30 border border-white/10 px-2 py-1 rounded">{item.id}</span>
+                                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <Award className="w-6 h-6 text-yellow-500" />
+                                    </div>
+                                </div>
+
+                                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <span className="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-2 block">{item.category}</span>
+                                    <h3 className="text-2xl font-serif text-white mb-4 italic">{item.title}</h3>
+
+                                    <div className="space-y-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 border-t border-white/10 pt-4">
+                                        <div>
+                                            <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Problem</span>
+                                            <p className="text-sm text-gray-300 font-light line-clamp-1">{item.problem}</p>
+                                        </div>
+                                        <div>
+                                            <span className="block text-[10px] text-green-500 uppercase tracking-widest">Outcome</span>
+                                            <p className="text-lg text-white font-medium">{item.result}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </motion.div>
             </div>
         </Section>
     );
@@ -560,34 +812,33 @@ const Methodology = () => {
 
 const Profile = () => {
     return (
-        <Section className="bg-[#080808] overflow-hidden py-32 min-h-[90vh] flex items-center justify-center relative">
+        <Section id="profile" className="bg-[#080808] overflow-hidden py-32 min-h-[90vh] flex items-center justify-center relative">
             {/* Background Texture */}
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none" />
 
             <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
 
-                {/* Parallax Image Card */}
+                {/* Parallax Image Card - Updated Image */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1 }}
-                    className="relative h-[600px] w-full bg-gray-900 overflow-hidden"
+                    className="relative h-[600px] w-full overflow-hidden rounded-sm"
                 >
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10" />
                     <motion.img
-                        initial={{ scale: 1.2 }}
+                        initial={{ scale: 1.1 }}
                         whileInView={{ scale: 1 }}
                         transition={{ duration: 2 }}
-                        src={DEMO_AGENT_IMAGE}
+                        src="/zaid-profile.png"
                         alt="Zaid Haroon"
-                        className="w-full h-full object-cover grayscale opacity-80"
+                        className="w-full h-full object-cover object-top opacity-90"
                     />
-                    <div className="absolute inset-0 border-[1px] border-white/10 m-4 pointer-events-none" />
+                    <div className="absolute inset-0 border-[1px] border-white/10 m-6 pointer-events-none z-20" />
                 </motion.div>
 
                 {/* Editorial Content */}
                 <div className="relative">
-                    <Quote className="w-16 h-16 text-yellow-600 mb-8 opacity-40 absolute -top-12 -left-8" />
-
                     <RevealText>
                         <h3 className="text-4xl md:text-6xl font-serif leading-[1.1] mb-8 text-white">
                             "I don't just sell houses. <br />
@@ -601,20 +852,12 @@ const Profile = () => {
                             <p>My clients aren't looking for a quick flip. They are looking for safety, growth, and a retirement that honors their years of hard work.</p>
                         </div>
 
-                        {/* Signature Block */}
+                        {/* Signature Block - New Font */}
                         <div className="mt-8">
-                            <svg width="200" height="60" viewBox="0 0 200 60" className="opacity-80">
-                                <motion.path
-                                    d="M10,40 Q30,10 50,40 T90,40 T130,40 T170,30"
-                                    fill="none"
-                                    stroke="#EAB308"
-                                    strokeWidth="2"
-                                    initial={{ pathLength: 0 }}
-                                    whileInView={{ pathLength: 1 }}
-                                    transition={{ duration: 2, delay: 0.5 }}
-                                />
-                            </svg>
-                            <p className="text-xs uppercase tracking-widest text-gray-500 mt-2">Zaid Haroon • Senior Strategist</p>
+                            <div className="font-signature text-6xl text-white/80 mb-2 transform -rotate-2 origin-left">
+                                Zaid Haroon
+                            </div>
+                            <p className="text-xs uppercase tracking-widest text-gray-500">Zaid Haroon • Senior Strategist</p>
                         </div>
                     </RevealText>
                 </div>
@@ -641,7 +884,7 @@ const FreeResource = () => {
     const rotateY = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
 
     return (
-        <Section className="bg-[#111] overflow-hidden min-h-screen py-32">
+        <Section id="resources" className="bg-[#111] overflow-hidden min-h-screen py-32">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,215,0,0.03),transparent_70%)]" />
 
             <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-20 items-center relative z-10">
@@ -762,9 +1005,14 @@ export default function App() {
 
                 {/* Desktop Menu - Centered */}
                 <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 pointer-events-auto">
-                    {['Methodology', 'Case Studies', 'About Zaid', 'Resources'].map((item) => (
-                        <a key={item} href="#" className="text-xs font-bold uppercase tracking-widest hover:text-yellow-500 transition-colors">
-                            {item}
+                    {[
+                        { name: 'The Blueprint', link: '#blueprint' },
+                        { name: 'Case Studies', link: '#case-studies' },
+                        { name: 'About Zaid', link: '#profile' },
+                        { name: 'Resources', link: '#resources' }
+                    ].map((item) => (
+                        <a key={item.name} href={item.link} className="text-xs font-bold uppercase tracking-widest hover:text-yellow-500 transition-colors">
+                            {item.name}
                         </a>
                     ))}
                 </div>
@@ -788,6 +1036,7 @@ export default function App() {
                 <Credentials />
                 <RealityCheck onOpenContact={() => setIsContactOpen(true)} />
                 <Methodology />
+                <CaseStudies />
                 <Profile />
                 <FreeResource />
                 <CTA onOpenContact={() => setIsContactOpen(true)} />

@@ -10,6 +10,7 @@ module.exports = {
         sans: ['var(--font-inter)', 'sans-serif'],
         serif: ['var(--font-playfair)', 'serif'],
         mono: ['var(--font-jetbrains)', 'monospace'],
+        signature: ['var(--font-signature)', 'cursive'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
