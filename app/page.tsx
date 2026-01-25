@@ -787,16 +787,34 @@ const CaseStudies = () => {
                     <p className="text-gray-400 max-w-2xl mx-auto font-light">Real scenarios. Real numbers. The application of the blueprint in live market conditions.</p>
                 </div>
 
-                <div className="flex w-full overflow-hidden mask-linear-fade">
+                <div className="flex w-full overflow-hidden mask-linear-fade relative">
                     <motion.div
-                        className="flex gap-8 px-4"
+                        className="flex gap-8 px-4 relative"
                         animate={{ x: ["0%", "-33.33%"] }}
                         transition={{ ease: "linear", duration: 40, repeat: Infinity }}
                     >
+                        {/* Wavy Connection Line - BACKGROUND */}
+                        <div className="absolute inset-0 top-1/2 -translate-y-1/2 z-0 pointer-events-none">
+                            <svg className="w-full h-[200px] -translate-y-1/2 opacity-20" preserveAspectRatio="none">
+                                <path
+                                    d={`M 0 100 
+                                        ${marqueeItems.map((_, i) => {
+                                        const x = (i * 432) + 200; // Approx center of each card (400w + 32gap)
+                                        const y = i % 2 === 0 ? 50 : 150; // Alternate up/down
+                                        return `Q ${x - 100} ${y} ${x} 100 T ${x + 216} 100`;
+                                    }).join(" ")}`}
+                                    fill="none"
+                                    stroke="#EAB308"
+                                    strokeWidth="2"
+                                    className="drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]"
+                                />
+                            </svg>
+                        </div>
+
                         {marqueeItems.map((item, index) => (
                             <div
                                 key={`${item.title}-${index}`}
-                                className="w-[300px] md:w-[400px] flex-shrink-0 h-[500px] bg-[#111] overflow-hidden rounded-sm border border-white/5 relative group hover:border-yellow-500/50 transition-all duration-500 cursor-pointer"
+                                className="w-[300px] md:w-[400px] flex-shrink-0 h-[500px] bg-[#111] overflow-hidden rounded-sm border border-white/5 relative group hover:border-yellow-500/50 transition-all duration-500 cursor-pointer z-10"
                                 onClick={() => setSelectedStudy(item)}
                             >
                                 {/* Background Image */}
