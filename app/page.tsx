@@ -625,31 +625,39 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
                             />
 
                             {/* Active Point Indicator - ELEGANT DIAMOND */}
-                            <motion.g
-                                animate={{
-                                    x: activeStep === 0 ? 5 : activeStep === 1 ? 40 : 95,
-                                    y: activeStep === 0 ? 88 : activeStep === 1 ? 60 : 10
-                                }}
-                            >
+                            {/* We use a group for the glow ring, calculating cx/cy dynamically to ensure SVG-space positioning */}
+                            <g>
                                 {/* Outer Glow Ring */}
                                 <motion.circle
-                                    r="6"
+                                    animate={{
+                                        cx: activeStep === 0 ? 5 : activeStep === 1 ? 40 : 95,
+                                        cy: activeStep === 0 ? 88 : activeStep === 1 ? 60 : 10
+                                    }}
+                                    r="8"
                                     fill="none"
                                     stroke="#EAB308"
                                     strokeWidth="0.5"
                                     opacity="0.5"
-                                    animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                                    initial={{ scale: 1, opacity: 0.5 }}
+                                    whileInView={{ scale: [1, 1.3, 1], opacity: [0.5, 0.2, 0.5] }}
                                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                                 />
-                                {/* Diamond Shape */}
+
+                                {/* Diamond Shape - Dynamic Path Calculation */}
                                 <motion.path
-                                    d="M 0 -4 L 4 0 L 0 4 L -4 0 Z"
+                                    animate={{
+                                        d: activeStep === 0
+                                            ? "M 5 84 L 9 88 L 5 92 L 1 88 Z"  /* (5,88) -> Top:5,84 Right:9,88 Bottom:5,92 Left:1,88 */
+                                            : activeStep === 1
+                                                ? "M 40 56 L 44 60 L 40 64 L 36 60 Z" /* (40,60) */
+                                                : "M 95 6 L 99 10 L 95 14 L 91 10 Z" /* (95,10) */
+                                    }}
                                     fill="#000"
                                     stroke="#EAB308"
                                     strokeWidth="1.5"
                                     className="drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]"
                                 />
-                            </motion.g>
+                            </g>
                         </svg>
 
                         {/* Floating Details Card (Heads Up Display) */}
