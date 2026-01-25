@@ -551,79 +551,80 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
 
             <div className="w-full max-w-7xl relative z-10 flex flex-col md:flex-row gap-12 md:gap-24 items-center">
 
-                <div className="w-full md:w-1/2 aspect-square relative border border-white/10 bg-[#080808]/80 backdrop-blur-sm rounded-xl overflow-hidden group shadow-[0_0_50px_rgba(234,179,8,0.05)]">
-                    {/* Bespoke Grid / HUD Background inside the Visualizer */}
-                    <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-yellow-900/40 via-black to-black" />
-                    <motion.div
-                        initial={{ backgroundPosition: "0px 0px" }}
-                        animate={{ backgroundPosition: "-40px -40px" }}
-                        transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-                        className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"
-                    />
-                    <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-xl" />
-                    <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-xl" />
+                <div className="w-full md:w-1/2 aspect-square relative border border-white/10 bg-[#080808]/80 backdrop-blur-sm rounded-xl overflow-hidden group shadow-[0_0_50px_rgba(234,179,8,0.05)] p-8 flex flex-col">
+                    {/* Background Grid */}
+                    <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:20px_20px]" />
 
-                    {/* Data Overlay */}
-                    <div className="absolute top-4 left-4 z-20 flex flex-col gap-1">
-                        <div className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                            <span className="text-[10px] uppercase font-mono text-green-500">Live Scanning</span>
+                    <div className="relative z-10 flex-1 flex flex-col justify-end gap-2">
+                        {/* Chart Bars - 5 Year Projection */}
+                        <div className="flex justify-between items-end h-full px-4 pb-8 border-b border-white/20 relative">
+                            {/* Dashed Trend Line */}
+                            <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-20">
+                                <motion.path
+                                    d="M20,250 L100,200 L200,120 L300,80 L400,20"
+                                    fill="none"
+                                    stroke="url(#trendGradient)"
+                                    strokeWidth="2"
+                                    strokeDasharray="5,5"
+                                    initial={{ pathLength: 0 }}
+                                    whileInView={{ pathLength: 1 }}
+                                    transition={{ duration: 2, ease: "easeOut" }}
+                                />
+                                <defs>
+                                    <linearGradient id="trendGradient" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0%" stopColor="#EAB308" stopOpacity="0.2" />
+                                        <stop offset="100%" stopColor="#EAB308" stopOpacity="1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+
+                            {/* Year 1 */}
+                            <div className="flex flex-col items-center gap-2 group/bar">
+                                <div className="text-[10px] text-gray-500 font-mono mb-1 group-hover/bar:text-white transition-colors">$0</div>
+                                <motion.div
+                                    initial={{ height: 0 }} whileInView={{ height: "40px" }} transition={{ duration: 1, delay: 0.2 }}
+                                    className={`w-12 bg-white/10 rounded-t-sm border border-white/20 ${activeStep === 0 ? 'bg-yellow-500/20 border-yellow-500' : ''} transition-all duration-500`}
+                                />
+                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 0 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>Year 1</span>
+                            </div>
+
+                            {/* Year 3 */}
+                            <div className="flex flex-col items-center gap-2 group/bar">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
+                                    className="px-2 py-1 bg-green-500/10 border border-green-500/30 rounded text-[10px] text-green-500 mb-1"
+                                >
+                                    +150%
+                                </motion.div>
+                                <motion.div
+                                    initial={{ height: 0 }} whileInView={{ height: "140px" }} transition={{ duration: 1, delay: 0.4 }}
+                                    className={`w-12 bg-white/10 rounded-t-sm border border-white/20 ${activeStep === 1 ? 'bg-yellow-500/20 border-yellow-500' : ''} transition-all duration-500`}
+                                />
+                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 1 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>Year 3</span>
+                            </div>
+
+                            {/* Year 5 */}
+                            <div className="flex flex-col items-center gap-2 group/bar">
+                                <div className="text-xs text-white font-serif mb-1 group-hover/bar:text-yellow-500 transition-colors">$2.4M</div>
+                                <motion.div
+                                    initial={{ height: 0 }} whileInView={{ height: "240px" }} transition={{ duration: 1, delay: 0.6 }}
+                                    className={`w-12 bg-gradient-to-t from-yellow-600/20 to-yellow-500 rounded-t-sm border border-yellow-500 ${activeStep === 2 ? 'shadow-[0_0_30px_rgba(234,179,8,0.3)]' : ''} transition-all duration-500`}
+                                />
+                                <span className={`text-[10px] uppercase tracking-widest ${activeStep === 2 ? 'text-yellow-500 font-bold' : 'text-gray-600'}`}>Year 5</span>
+                            </div>
                         </div>
-                        <span className="text-[10px] font-mono text-gray-500">LAT: 1.3521 // LNG: 103.8198</span>
                     </div>
 
-                    {/* Animated SCANNER */}
-                    <motion.div
-                        animate={{ left: ["0%", "100%"] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-0 bottom-0 w-[1px] bg-yellow-500/50 z-20 shadow-[0_0_15px_rgba(234,179,8,1)]"
-                    />
+                    <div className="mt-6 flex justify-between items-center border-t border-white/10 pt-4">
+                        <span className="text-[10px] uppercase tracking-widest text-gray-500">Projection Model</span>
+                        <div className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                            <span className="text-[10px] text-white font-mono">Live Data</span>
+                        </div>
+                    </div>
 
-                    <svg className="absolute bottom-0 left-0 w-full h-full z-10 p-8" preserveAspectRatio="none">
-                        {/* Market Average - Static Faint Line */}
-                        <path d="M0 300 C 100 290, 200 280, 300 280 S 400 270, 500 270" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="5,5" />
-
-                        {/* THE BLUEPRINT - Animated "Alive" Line */}
-                        <motion.path
-                            animate={{
-                                d: [
-                                    "M0 300 C 100 300, 200 200, 300 150 S 400 50, 500 20",
-                                    "M0 300 C 100 290, 200 210, 300 140 S 400 60, 500 10",
-                                    "M0 300 C 100 310, 200 190, 300 160 S 400 40, 500 30",
-                                    "M0 300 C 100 300, 200 200, 300 150 S 400 50, 500 20"
-                                ]
-                            }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            fill="none"
-                            stroke="#EAB308"
-                            strokeWidth="3"
-                            filter="url(#glow)"
-                        />
-                        <defs>
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur" />
-                                    <feMergeNode in="SourceGraphic" />
-                                </feMerge>
-                            </filter>
-                        </defs>
-
-                        {/* Floating Data Points */}
-                        <motion.circle cx="300" cy="150" r="4" fill="#EAB308" animate={{ cy: [150, 140, 160, 150] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
-                        <motion.circle cx="450" cy="50" r="4" fill="#EAB308" animate={{ cy: [50, 60, 40, 50] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
-                    </svg>
-
-                    <div className="absolute bottom-6 right-6 text-right z-20">
+                    <div className="absolute top-6 right-6 text-right">
                         <span className="block text-[10px] uppercase tracking-widest text-gray-400 mb-1">Your projected wealth over the next 5 years</span>
-                        <motion.span
-                            animate={{ opacity: [0.5, 1, 0.5] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                            className="block text-4xl font-serif text-white leading-none"
-                        >
-                            $2.4M
-                        </motion.span>
-                        <span className="text-[10px] text-green-500 font-mono">+185% ROI</span>
                     </div>
                 </div>
 
@@ -875,11 +876,11 @@ const FreeResource = () => {
     const rotateY = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
 
     return (
-        <Section id="resources" className="bg-[#111] overflow-hidden min-h-screen py-32">
+        <Section id="resources" className="bg-[#111] overflow-hidden min-h-[90vh] py-24 flex items-center">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,215,0,0.03),transparent_70%)]" />
 
-            <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-20 items-center relative z-10">
-                <div className="order-2 md:order-1">
+            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center px-4">
+                <div className="order-2 md:order-1 relative z-10">
                     <RevealText>
                         <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-4 block">Confidential Strategy</span>
                         <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
@@ -900,53 +901,57 @@ const FreeResource = () => {
                     </RevealText>
                 </div>
 
-                {/* 3D Floating Book with Idle Animation */}
-                <div className="order-1 md:order-2 flex justify-center perspective-1000" onMouseMove={handleMouseMove}>
+                {/* 3D Floating Book with Idle Animation - CENTERED & REVAMPED */}
+                <div className="order-1 md:order-2 flex justify-center items-center perspective-1000 h-[600px] w-full" onMouseMove={handleMouseMove}>
                     <motion.div
                         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                        animate={{ y: [0, -15, 0], rotateZ: [0, 2, 0] }}
+                        animate={{ y: [0, -15, 0], rotateZ: [0, 1, 0] }}
                         transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                        className="relative w-[300px] h-[450px] group cursor-pointer"
+                        className="relative w-[340px] h-[480px] group cursor-pointer"
                     >
                         {/* Front Cover */}
-                        <div className="absolute inset-0 bg-[#0a0a0a] border border-yellow-500/20 rounded-sm shadow-2xl flex flex-col p-8 backface-hidden" style={{ transform: "translateZ(25px)" }}>
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent z-10" />
+                        <div className="absolute inset-0 bg-[#080808] border border-yellow-500/30 rounded-r-sm shadow-[20px_20px_50px_rgba(0,0,0,0.5)] flex flex-col p-10 backface-hidden" style={{ transform: "translateZ(30px)" }}>
+                            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/leather.png')] opacity-30 mix-blend-overlay" />
+                            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
                             <div className="mt-8 relative z-20">
-                                <div className="w-8 h-8 rounded-full border border-yellow-500/50 flex items-center justify-center mb-4"><Award className="w-4 h-4 text-yellow-500" /></div>
+                                <div className="w-10 h-10 rounded-full border border-yellow-500/50 flex items-center justify-center mb-6"><Award className="w-5 h-5 text-yellow-500" /></div>
                                 <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Classified</span>
-                                <span className="font-serif text-3xl text-white leading-tight">Wealth<br />Architecture</span>
+                                <span className="font-serif text-4xl text-white leading-[0.9]">Wealth<br />Architecture</span>
                             </div>
                             <div className="mt-auto text-right relative z-20">
-                                <span className="font-serif text-6xl text-white/5 font-bold block leading-none">01</span>
+                                <span className="font-serif text-7xl text-white/5 font-bold block leading-none">01</span>
                                 <span className="font-mono text-[10px] text-yellow-500 uppercase tracking-[0.3em]">Edition</span>
                             </div>
                             {/* Hover Sheen */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-30" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-30" />
                         </div>
 
                         {/* Back Cover */}
-                        <div className="absolute inset-0 bg-[#0a0a0a] border border-white/5 rounded-sm" style={{ transform: "translateZ(-25px) rotateY(180deg)" }} />
+                        <div className="absolute inset-0 bg-[#080808] border border-white/5 rounded-l-sm" style={{ transform: "translateZ(-30px) rotateY(180deg)" }} />
 
-                        {/* Spine (Left) */}
-                        <div className="absolute top-0 bottom-0 w-[50px] bg-[#050505] border-l border-white/5" style={{ transform: "rotateY(-90deg) translateZ(25px)", left: 0 }}>
-                            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 whitespace-nowrap text-xs font-mono text-gray-600 uppercase tracking-widest">Confidential Dossier</span>
+                        {/* Spine (Left) - Thick & Darker */}
+                        <div className="absolute top-0 bottom-0 w-[60px] bg-[#030303] border-l border-r border-white/5 flex items-center justify-center" style={{ transform: "rotateY(-90deg) translateZ(30px)", left: 0 }}>
+                            <span className="rotate-90 whitespace-nowrap text-xs font-mono text-yellow-600/50 uppercase tracking-[0.2em] w-full text-center">Confidential</span>
                         </div>
 
                         {/* Pages (Right) */}
-                        <div className="absolute top-2 bottom-2 w-[48px] bg-[#fff] opacity-90" style={{ transform: "rotateY(90deg) translateZ(273px)", right: 0, background: "linear-gradient(to right, #ccc 1px, transparent 1px)", backgroundSize: "4px 100%" }} />
+                        <div className="absolute top-2 bottom-2 w-[58px] bg-[#e3e3e3]" style={{ transform: "rotateY(90deg) translateZ(308px)", right: 0, backgroundImage: "linear-gradient(to right, #ccc 1px, transparent 1px)", backgroundSize: "3px 100%" }} />
 
                         {/* Pages (Top) */}
-                        <div className="absolute left-2 right-2 h-[48px] bg-[#fff] opacity-90" style={{ transform: "rotateX(90deg) translateZ(25px)", top: 0, background: "linear-gradient(to bottom, #ccc 1px, transparent 1px)", backgroundSize: "100% 4px" }} />
+                        <div className="absolute left-0 right-0 h-[58px] bg-[#e3e3e3]" style={{ transform: "rotateX(90deg) translateZ(30px)", top: 0, backgroundImage: "linear-gradient(to bottom, #ccc 1px, transparent 1px)", backgroundSize: "100% 3px" }} />
 
                         {/* Pages (Bottom) */}
-                        <div className="absolute left-2 right-2 h-[48px] bg-[#fff] opacity-90" style={{ transform: "rotateX(-90deg) translateZ(423px)", bottom: 0, background: "linear-gradient(to bottom, #ccc 1px, transparent 1px)", backgroundSize: "100% 4px" }} />
+                        <div className="absolute left-0 right-0 h-[58px] bg-[#e3e3e3]" style={{ transform: "rotateX(-90deg) translateZ(448px)", bottom: 0, backgroundImage: "linear-gradient(to bottom, #ccc 1px, transparent 1px)", backgroundSize: "100% 3px" }} />
 
+                        {/* Shadow */}
+                        <div className="absolute -bottom-16 left-10 right-10 h-4 bg-black/50 blur-xl rounded-[100%]" />
                     </motion.div>
                 </div>
             </div>
         </Section>
-    )
-}
+    );
+};
 
 /* -------------------------------------------------------------------------- */
 /* CTA (THE HORIZON) - CLEAN & SLEEK                 */
