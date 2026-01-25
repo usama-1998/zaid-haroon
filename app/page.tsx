@@ -217,15 +217,7 @@ const Hero = ({ onOpenVideo, onOpenContact }: { onOpenVideo: () => void, onOpenC
                     <span className="font-mono text-[10px] text-white/30 tracking-[0.2em] uppercase">SG • Est. 2010</span>
                 </div>
 
-                {/* Top Right */}
-                <div className="absolute top-8 right-8 flex flex-col items-end gap-1">
-                    <span className="font-mono text-[10px] text-white/30 tracking-widest">STRATEGY. PROTOCOL.</span>
-                    <div className="flex gap-1">
-                        <div className="w-1 h-1 bg-white/20" />
-                        <div className="w-1 h-1 bg-white/20" />
-                        <div className="w-1 h-1 bg-yellow-500" />
-                    </div>
-                </div>
+
 
                 {/* Bottom Left */}
                 <div className="absolute bottom-8 left-8 hidden md:block">
@@ -337,9 +329,7 @@ const Credentials = () => {
     return (
         <Section className="bg-[#050505] min-h-[60vh] py-20 flex items-center justify-center border-b border-white/5">
             <div className="w-full max-w-7xl relative z-10">
-                <div className="text-center mb-20">
-                    <span className="text-[10px] uppercase tracking-widest text-white/30">Verified Performance Data</span>
-                </div>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-0 items-baseline">
                     <StatMinimal value="#01" label="SRI Top Achiever" delay={0} />
@@ -487,7 +477,7 @@ const Methodology = () => {
                 {/* Visualizer - Auto updating */}
                 <div className="w-full md:w-1/2 aspect-square relative border border-white/10 bg-[#080808]/80 backdrop-blur-sm rounded-xl p-8 shadow-2xl overflow-hidden group">
                     {/* Bespoke Grid / HUD Background inside the Visualizer */}
-                    <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-900/40 via-black to-black" />
+                    <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-yellow-900/40 via-black to-black" />
                     <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:20px_20px]" />
                     <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-xl" />
                     <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-xl" />
