@@ -564,131 +564,105 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
                     <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-xl" />
                     <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-xl" />
 
-                    {/* Grid Background */}
-                    <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#444_1px,transparent_1px),linear-gradient(to_bottom,#444_1px,transparent_1px)] bg-[size:40px_40px]" />
-
-                    {/* Chart Container */}
-                    <div className="absolute inset-8 z-10">
-                        <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
-                            {/* Axes */}
-                            <line x1="0" y1="100" x2="100" y2="100" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
-                            <line x1="0" y1="0" x2="0" y2="100" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
-
-                            {/* Market Average Line (Flat/Slow) */}
-                            <motion.path
-                                d="M0,90 Q50,85 100,80"
-                                fill="none"
-                                stroke="#4B5563"
-                                strokeWidth="1"
-                                strokeDasharray="4 4"
-                                initial={{ pathLength: 0 }}
-                                whileInView={{ pathLength: 1 }}
-                                transition={{ duration: 2 }}
-                            />
-                            <text x="95" y="75" className="text-[3px] fill-gray-500 font-mono text-right" textAnchor="end">Market Average</text>
-
-
-                            {/* Strategy Line (Exponential) */}
-                            <motion.path
-                                d="M0,90 C30,85 60,60 100,10"
-                                fill="none"
-                                stroke="#EAB308"
-                                strokeWidth="2"
-                                initial={{ pathLength: 0 }}
-                                whileInView={{ pathLength: 1 }}
-                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                    d="M0,90 C30,85 60,60 100,10"
+                    fill="none"
+                    stroke="#EAB308"
+                    strokeWidth="2"
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
                             />
 
-                            {/* Area under curve */}
-                            <motion.path
-                                d="M0,90 C30,85 60,60 100,10 V100 H0 Z"
-                                fill="url(#gradientGold)"
-                                className="opacity-20"
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 0.2 }}
-                                transition={{ duration: 1, delay: 0.5 }}
-                            />
-                            <defs>
-                                <linearGradient id="gradientGold" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stopColor="#EAB308" />
-                                    <stop offset="100%" stopColor="transparent" />
-                                </linearGradient>
-                            </defs>
-
-                            {/* Highlight Points based on Active Step */}
-                            {/* Step 1: Foundation */}
-                            <motion.circle cx="0" cy="90" r="2" fill="#EAB308" stroke="black" strokeWidth="0.5" animate={{ scale: activeStep >= 0 ? 1 : 0.5, opacity: activeStep >= 0 ? 1 : 0.5 }} />
-                            {/* Step 2: Acceleration */}
-                            <motion.circle cx="50" cy="70" r="2" fill="#EAB308" stroke="black" strokeWidth="0.5" animate={{ scale: activeStep >= 1 ? 1 : 0.5, opacity: activeStep >= 1 ? 0.5 : 0 }} />
-                            {/* Step 3: Target */}
-                            <motion.circle cx="100" cy="10" r="3" fill="#EAB308" stroke="white" strokeWidth="1" animate={{ scale: activeStep >= 2 ? 1.5 : 1 }} />
-
-                            {/* Floating HUD Label attached to Active Point */}
-                            <motion.g
-                                animate={{
-                                    x: activeStep === 0 ? 5 : activeStep === 1 ? 55 : 80,
-                                    y: activeStep === 0 ? 80 : activeStep === 1 ? 60 : 15
-                                }}
-                                transition={{ duration: 0.5, ease: "easeInOut" }}
-                            >
-                                <rect width="35" height="12" fill="#111" stroke="#333" strokeWidth="0.2" rx="1" />
-                                <text x="17.5" y="8" textAnchor="middle" className="text-[4px] fill-white font-mono font-bold">
-                                    {activeStep === 0 ? "START: $0" : activeStep === 1 ? "GROWTH: +150%" : "TARGET: $2.5M"}
-                                </text>
-                            </motion.g>
-                        </svg>
-                    </div>
-
-                    <div className="absolute bottom-6 left-6 z-20">
-                        <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                            <span className="text-[10px] text-white/50 font-mono tracking-widest uppercase">System Active</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Right: The Text - Auto-Playing List */}
-                <div className="w-full md:w-1/2 flex flex-col gap-4">
-                    <div className="mb-8">
-                        <span className="text-yellow-500 font-mono text-xs uppercase tracking-[0.2em] mb-4 block">The Blueprint</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-white">
-                            Reverse Engineering <br /> Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 to-yellow-600">Wealth.</span>
-                        </h2>
-                    </div>
-
-                    <BlueprintStep
-                        number="01"
-                        title="The 35-Year Roadmap"
-                        desc="We don't start with property. We start with the end in mind. We calculate exactly what you need in 2050, then we build the mathematical bridge to cross that gap."
-                        isActive={activeStep === 0}
-                        onSelect={() => setActiveStep(0)}
+                    {/* Area under curve */}
+                    <motion.path
+                        d="M0,90 C30,85 60,60 100,10 V100 H0 Z"
+                        fill="url(#gradientGold)"
+                        className="opacity-20"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 0.2 }}
+                        transition={{ duration: 1, delay: 0.5 }}
                     />
-                    <BlueprintStep
-                        number="02"
-                        title="Portfolio Architecture"
-                        desc="Moving beyond 'buy and sell'. We structure your assets to compound. Your HDB is not a home; it is the first domino in a chain reaction designed to fund your future."
-                        isActive={activeStep === 1}
-                        onSelect={() => setActiveStep(1)}
-                    />
-                    <BlueprintStep
-                        number="03"
-                        title="Strict Execution"
-                        desc="Plans fail without discipline. We execute with military precision, adjusting for market cycles, interest rates, and regulations to keep you on track to $2M."
-                        isActive={activeStep === 2}
-                        onSelect={() => setActiveStep(2)}
-                    />
+                    <defs>
+                        <linearGradient id="gradientGold" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#EAB308" />
+                            <stop offset="100%" stopColor="transparent" />
+                        </linearGradient>
+                    </defs>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 }}
-                        className="mt-8"
+                    {/* Highlight Points based on Active Step */}
+                    {/* Step 1: Foundation */}
+                    <motion.circle cx="0" cy="90" r="2" fill="#EAB308" stroke="black" strokeWidth="0.5" animate={{ scale: activeStep >= 0 ? 1 : 0.5, opacity: activeStep >= 0 ? 1 : 0.5 }} />
+                    {/* Step 2: Acceleration */}
+                    <motion.circle cx="50" cy="70" r="2" fill="#EAB308" stroke="black" strokeWidth="0.5" animate={{ scale: activeStep >= 1 ? 1 : 0.5, opacity: activeStep >= 1 ? 0.5 : 0 }} />
+                    {/* Step 3: Target */}
+                    <motion.circle cx="100" cy="10" r="3" fill="#EAB308" stroke="white" strokeWidth="1" animate={{ scale: activeStep >= 2 ? 1.5 : 1 }} />
+
+                    {/* Floating HUD Label attached to Active Point */}
+                    <motion.g
+                        animate={{
+                            x: activeStep === 0 ? 5 : activeStep === 1 ? 55 : 80,
+                            y: activeStep === 0 ? 80 : activeStep === 1 ? 60 : 15
+                        }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                        <PremiumButton onClick={onOpenContact}>Start Your Blueprint</PremiumButton>
-                    </motion.div>
+                        <rect width="35" height="12" fill="#111" stroke="#333" strokeWidth="0.2" rx="1" />
+                        <text x="17.5" y="8" textAnchor="middle" className="text-[4px] fill-white font-mono font-bold">
+                            {activeStep === 0 ? "START: $0" : activeStep === 1 ? "GROWTH: +150%" : "TARGET: $2.5M"}
+                        </text>
+                    </motion.g>
+                </svg>
+            </div>
+
+            <div className="absolute bottom-6 left-6 z-20">
+                <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-[10px] text-white/50 font-mono tracking-widest uppercase">System Active</span>
                 </div>
             </div>
-        </Section>
+        </div>
+
+                {/* Right: The Text - Auto-Playing List */ }
+    <div className="w-full md:w-1/2 flex flex-col gap-4">
+        <div className="mb-8">
+            <span className="text-yellow-500 font-mono text-xs uppercase tracking-[0.2em] mb-4 block">The Blueprint</span>
+            <h2 className="text-4xl md:text-5xl font-serif text-white">
+                Reverse Engineering <br /> Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 to-yellow-600">Wealth.</span>
+            </h2>
+        </div>
+
+        <BlueprintStep
+            number="01"
+            title="The 35-Year Roadmap"
+            desc="We don't start with property. We start with the end in mind. We calculate exactly what you need in 2050, then we build the mathematical bridge to cross that gap."
+            isActive={activeStep === 0}
+            onSelect={() => setActiveStep(0)}
+        />
+        <BlueprintStep
+            number="02"
+            title="Portfolio Architecture"
+            desc="Moving beyond 'buy and sell'. We structure your assets to compound. Your HDB is not a home; it is the first domino in a chain reaction designed to fund your future."
+            isActive={activeStep === 1}
+            onSelect={() => setActiveStep(1)}
+        />
+        <BlueprintStep
+            number="03"
+            title="Strict Execution"
+            desc="Plans fail without discipline. We execute with military precision, adjusting for market cycles, interest rates, and regulations to keep you on track to $2M."
+            isActive={activeStep === 2}
+            onSelect={() => setActiveStep(2)}
+        />
+
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-8"
+        >
+            <PremiumButton onClick={onOpenContact}>Start Your Blueprint</PremiumButton>
+        </motion.div>
+    </div>
+            </div >
+        </Section >
     );
 };
 
@@ -921,7 +895,7 @@ const FreeResource = () => {
                 </div>
 
                 {/* 3D Floating Book with Idle Animation */}
-                <div className="order-1 md:order-2 flex justify-center perspective-1000 pl-12" onMouseMove={handleMouseMove}>
+                <div className="order-1 md:order-2 flex justify-center perspective-1000" onMouseMove={handleMouseMove}>
                     <motion.div
                         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
                         animate={{ y: [0, -15, 0], rotateZ: [0, 2, 0] }}
@@ -993,7 +967,7 @@ const CTA = ({ onOpenContact }: { onOpenContact: () => void }) => {
                         Executive Private Client Service
                     </span>
                     <h2 className="text-5xl md:text-8xl font-serif mb-8 tracking-tight text-white mix-blend-difference drop-shadow-2xl">
-                        Begin Your Legacy.
+                        Begin Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Legacy.</span>
                     </h2>
                     <p className="text-gray-400 mb-12 leading-relaxed max-w-xl mx-auto font-light text-lg">
                         The window of opportunity in Singapore real estate is narrow. Strategy is the only leverage. Let's build your $2M roadmap.
