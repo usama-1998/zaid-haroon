@@ -20,7 +20,7 @@ import { twMerge } from "tailwind-merge";
 /* -------------------------------------------------------------------------- */
 
 const DEMO_AGENT_IMAGE = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2144&auto=format&fit=crop";
-const VIDEO_ID = "xXok2VMKDp0";
+const VIDEO_ID = "HVPZVThbN7s";
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -418,7 +418,13 @@ const Credentials = () => {
 const CrisisGraph = () => {
     return (
         <div className="relative w-full h-[400px] bg-[#0F0F0F] rounded-lg border border-white/5 p-6 flex flex-col justify-between overflow-hidden group hover:border-red-500/30 transition-colors duration-500">
-            <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+            <motion.div
+                className="absolute inset-0 z-0 opacity-10"
+                initial={{ backgroundPosition: "0px 0px" }}
+                animate={{ backgroundPosition: "-40px -40px" }}
+                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                style={{ backgroundImage: 'linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+            />
             <div className="flex justify-between items-start z-10">
                 <div>
                     <span className="text-[10px] uppercase tracking-widest text-gray-500">Projection Model</span>
@@ -527,7 +533,7 @@ const BlueprintStep = ({ number, title, desc, isActive, onSelect }: { number: st
     </motion.div>
 );
 
-const Methodology = () => {
+const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
     const [activeStep, setActiveStep] = useState(0);
 
     // Auto-play cycle
@@ -550,7 +556,8 @@ const Methodology = () => {
                     {/* Bespoke Grid / HUD Background inside the Visualizer */}
                     <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-yellow-900/40 via-black to-black" />
                     <motion.div
-                        animate={{ backgroundPosition: ["0px 0px", "40px 40px"] }}
+                        initial={{ backgroundPosition: "0px 0px" }}
+                        animate={{ backgroundPosition: "-40px -40px" }}
                         transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
                         className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"
                     />
@@ -677,7 +684,7 @@ const Methodology = () => {
                         transition={{ delay: 0.5 }}
                         className="mt-8"
                     >
-                        <PremiumButton>Start Your Blueprint</PremiumButton>
+                        <PremiumButton onClick={onOpenContact}>Start Your Blueprint</PremiumButton>
                     </motion.div>
                 </div>
             </div>
@@ -834,7 +841,7 @@ const Profile = () => {
                         initial={{ scale: 1.1 }}
                         whileInView={{ scale: 1 }}
                         transition={{ duration: 2 }}
-                        src="/zaid-profile.png"
+                        src="/zaid-profile-gold.png"
                         alt="Zaid Haroon"
                         className="w-full h-full object-cover object-top opacity-90"
                     />
@@ -914,7 +921,7 @@ const FreeResource = () => {
                 </div>
 
                 {/* 3D Floating Book with Idle Animation */}
-                <div className="order-1 md:order-2 flex justify-center perspective-1000" onMouseMove={handleMouseMove}>
+                <div className="order-1 md:order-2 flex justify-center perspective-1000 pl-12" onMouseMove={handleMouseMove}>
                     <motion.div
                         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
                         animate={{ y: [0, -15, 0], rotateZ: [0, 2, 0] }}
@@ -967,32 +974,36 @@ const FreeResource = () => {
 
 const CTA = ({ onOpenContact }: { onOpenContact: () => void }) => {
     return (
-        <Section className="bg-[#050505] text-white min-h-[80vh] relative overflow-hidden flex items-center justify-center">
-            {/* Subtle Horizon Glow only */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[100%] h-[300px] bg-yellow-600/10 blur-[100px] rounded-full pointer-events-none" />
-            <GridBackground />
+        <Section className="bg-[#050505] text-white min-h-[80vh] relative overflow-hidden flex items-center justify-center border-t border-white/10">
+            {/* Darker Architecture Background */}
+            <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_100%)] z-10" />
+            <div className="absolute inset-0 opacity-20 pointer-events-none z-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111), repeating-linear-gradient(45deg, #111 25%, #050505 25%, #050505 75%, #111 75%, #111)', backgroundPosition: '0 0, 10px 10px', backgroundSize: '20px 20px' }} />
 
-            <div className="relative z-10 w-full max-w-4xl text-center p-12 md:p-20">
+            <div className="absolute top-12 left-12 w-32 h-32 border-l border-t border-white/20 opacity-50 z-10" />
+            <div className="absolute bottom-12 right-12 w-32 h-32 border-r border-b border-white/20 opacity-50 z-10" />
+
+            {/* Giant Watermark */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-signature text-[20vw] text-white/5 whitespace-nowrap z-0 pointer-events-none select-none">
+                Zaid Haroon
+            </div>
+
+            <div className="relative z-20 w-full max-w-5xl text-center p-12 md:p-20 border border-white/5 bg-black/50 backdrop-blur-sm rounded-sm">
                 <RevealText>
-                    <span className="inline-block py-1 px-3 border border-white/10 rounded-full bg-white/5 text-[10px] uppercase tracking-widest text-gray-400 mb-8 backdrop-blur-md">
-                        Limited Availability Q1 2026
+                    <span className="inline-block py-1 px-3 border border-yellow-500/30 rounded-full bg-yellow-500/5 text-[10px] uppercase tracking-widest text-yellow-500 mb-8">
+                        Executive Private Client Service
                     </span>
                     <h2 className="text-5xl md:text-8xl font-serif mb-8 tracking-tight text-white mix-blend-difference drop-shadow-2xl">
                         Begin Your Legacy.
                     </h2>
-                    <p className="text-gray-400 mb-16 leading-relaxed max-w-xl mx-auto font-light text-lg">
-                        The best time to plant a tree was 20 years ago. The second best time is now.
-                        We are building a portfolio that will take care of you when you stop working.
+                    <p className="text-gray-400 mb-12 leading-relaxed max-w-xl mx-auto font-light text-lg">
+                        The window of opportunity in Singapore real estate is narrow. Strategy is the only leverage. Let's build your $2M roadmap.
                     </p>
 
-                    <PremiumButton onClick={onOpenContact} className="px-12 py-6 text-base">
-                        Initiate Strategy Session <ArrowRight className="w-5 h-5" />
-                    </PremiumButton>
-
-                    <div className="mt-12 flex items-center justify-center gap-8 text-[10px] uppercase tracking-widest text-gray-600">
-                        <span>• Asset Planning</span>
-                        <span>• Portfolio Restructuring</span>
-                        <span>• Legacy Building</span>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                        <PremiumButton onClick={onOpenContact} className="px-12 py-6 text-base w-full md:w-auto">
+                            Initiate Strategy Session <ArrowRight className="w-5 h-5" />
+                        </PremiumButton>
+                        <span className="text-xs text-gray-500 font-mono uppercase tracking-widest">or WhatsApp Direct</span>
                     </div>
                 </RevealText>
             </div>
@@ -1027,6 +1038,9 @@ export default function App() {
             <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} onOpenContact={() => setIsContactOpen(true)} />
 
             <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center mix-blend-difference text-white pointer-events-none">
+                {/* Semi-transparent background for sticky menu */}
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-md pointer-events-none -z-10 border-b border-white/5" />
+
                 <span className="font-bold tracking-tighter text-xl pointer-events-auto font-serif">ZH.</span>
 
                 {/* Desktop Menu - Centered */}
@@ -1060,10 +1074,10 @@ export default function App() {
                 <Hero onOpenVideo={() => setIsVideoOpen(true)} onOpenContact={() => setIsContactOpen(true)} />
                 <Marquee />
                 <Credentials />
-                <RealityCheck onOpenContact={() => setIsContactOpen(true)} />
-                <Methodology />
-                <CaseStudies />
                 <Profile />
+                <RealityCheck onOpenContact={() => setIsContactOpen(true)} />
+                <Methodology onOpenContact={() => setIsContactOpen(true)} />
+                <CaseStudies />
                 <FreeResource />
                 <CTA onOpenContact={() => setIsContactOpen(true)} />
             </main>
