@@ -771,350 +771,329 @@ const CaseStudies = () => {
         },
     ];
 
-    return (
-        <Section id="case-studies" className="bg-black py-32 border-t border-white/5 px-0 md:px-0">
-            <CaseStudyModal isOpen={!!selectedCase} onClose={() => setSelectedCase(null)} data={selectedCase} />
+    const Marquee = () => {
+        // Duplicate the array of case studies to ensure seamless looping
+        const marqueeItems = [...CASE_STUDIES, ...CASE_STUDIES, ...CASE_STUDIES];
+        const [selectedStudy, setSelectedStudy] = useState<typeof CASE_STUDIES[0] | null>(null);
 
-            <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
-                <div className="mb-20 text-center">
-                    <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-4 block">Proven Results</span>
-                    <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">Case Studies</h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto font-light">Real scenarios. Real numbers. The application of the blueprint in live market conditions.</p>
-                </div>
-            </div>
+        return (
+            <Section id="work" className="bg-[#050505] min-h-[50vh] flex flex-col justify-center overflow-hidden py-24 border-y border-white/5 relative">
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none" />
 
-            <div className="w-full overflow-hidden flex">
-                <motion.div
-                    className="flex gap-6 pl-6"
-                    animate={{ x: [0, -1000] }}
-                    transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-                >
-                    {[...cases, ...cases].map((item, i) => (
-                        <div
-                            key={i}
-                            const Marquee= () => {
-    // Duplicate the array of case studies to ensure seamless looping
-    const marqueeItems = [...CASE_STUDIES, ...CASE_STUDIES, ...CASE_STUDIES];
-                    const [selectedStudy, setSelectedStudy] = useState<typeof CASE_STUDIES[0] | null>(null);
-
-                    return (
-                    <Section id="work" className="bg-[#050505] min-h-[50vh] flex flex-col justify-center overflow-hidden py-24 border-y border-white/5 relative">
-                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none" />
-
-                        <div className="w-full relative z-10">
-                            <div className="flex justify-center mb-12">
-                                <span className="text-yellow-500 font-mono text-xs uppercase tracking-[0.3em]">Declassified Operations</span>
-                            </div>
-
-                            <div className="flex w-full overflow-hidden mask-linear-fade">
-                                <motion.div
-                                    className="flex gap-8 px-4"
-                                    animate={{ x: ["0%", "-33.33%"] }}
-                                    transition={{ ease: "linear", duration: 40, repeat: Infinity }}
-                                >
-                                    {marqueeItems.map((item, index) => (
-                                        <div
-                                            key={`${item.title}-${index}`}
-                                            className="w-[300px] md:w-[400px] flex-shrink-0 bg-[#111] border border-white/5 p-8 relative group hover:border-yellow-500/30 transition-colors cursor-pointer"
-                                            onClick={() => setSelectedStudy(item)}
-                                        >
-                                            <div className="absolute top-4 right-4">
-                                                <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-yellow-500 transition-colors" />
-                                            </div>
-                                            <span className="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-2 block">{item.category}</span>
-                                            <h3 className="text-2xl font-serif text-white mb-4 italic">{item.title}</h3>
-
-                                            <div className="mt-4 opacity-100 transition-opacity duration-300">
-                                                <div>
-                                                    <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Problem</span>
-                                                    <p className="text-sm text-gray-300 font-light line-clamp-1">{item.problem}</p>
-                                                </div>
-                                                <div className="mt-2">
-                                                    <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Outcome</span>
-                                                    <p className="text-sm text-white font-medium">{item.result}</p>
-                                                </div>
-                                            </div>
-                                            <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                                        </div>
-                                    ))}
-                                </motion.div>
-                            </div>
-                        </div>
-
-                        <CaseStudyModal isOpen={!!selectedStudy} onClose={() => setSelectedStudy(null)} data={selectedStudy} />
-                    </Section>
-                    );
-};
-
-/* -------------------------------------------------------------------------- */
-/* PROFILE SECTION - EDITORIAL REVAMP                             */
-/* -------------------------------------------------------------------------- */
-
-const Profile = () => {
-    return (
-                    <Section id="profile" className="bg-[#080808] overflow-hidden py-32 min-h-[90vh] flex items-center justify-center relative">
-                        {/* Background Texture */}
-                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none" />
-
-                        <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
-
-                            {/* Parallax Image Card - Updated Image */}
-                            <motion.div
-                                initial={{ opacity: 0, x: -50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 1 }}
-                                className="relative h-[600px] w-full overflow-hidden rounded-sm"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10" />
-                                <motion.img
-                                    initial={{ scale: 1.1 }}
-                                    whileInView={{ scale: 1 }}
-                                    transition={{ duration: 2 }}
-                                    src="/zaid-profile-gold.png"
-                                    alt="Zaid Haroon"
-                                    className="w-full h-full object-cover object-top opacity-90"
-                                />
-                                <div className="absolute inset-0 border-[1px] border-white/10 m-6 pointer-events-none z-20" />
-                            </motion.div>
-
-                            {/* Editorial Content */}
-                            <div className="relative">
-                                <RevealText>
-                                    <h3 className="text-4xl md:text-6xl font-serif leading-[1.1] mb-8 text-white">
-                                        "I don't just sell houses. <br />
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600">I architect your legacy.</span>"
-                                    </h3>
-                                </RevealText>
-
-                                <RevealText delay={0.2}>
-                                    <div className="space-y-6 text-lg font-light text-gray-400 leading-relaxed mb-12 border-l border-white/10 pl-6">
-                                        <p>Being the first Muslim to hit #1 at SRI wasn't about the accolades. It was about proving that <span className="text-white italic">Tawakkul</span> (Trust in God) paired with relentless, ethical strategy wins in any market.</p>
-                                        <p>My clients aren't looking for a quick flip. They are looking for safety, growth, and a retirement that honors their years of hard work.</p>
-                                    </div>
-
-                                    {/* Signature Block - New Font */}
-                                    <div className="mt-8">
-                                        <div className="font-signature text-6xl text-white/80 mb-2 transform -rotate-2 origin-left">
-                                            Zaid Haroon
-                                        </div>
-                                        <p className="text-xs uppercase tracking-widest text-gray-500">Zaid Haroon • Senior Strategist</p>
-                                    </div>
-                                </RevealText>
-                            </div>
-                        </div>
-                    </Section>
-                    );
-};
-
-/* -------------------------------------------------------------------------- */
-/* FREE RESOURCE (THE DOSSIER) - ANIMATED BOOK      */
-/* -------------------------------------------------------------------------- */
-
-const FreeResource = () => {
-    const mouseX = useMotionValue(0);
-                    const mouseY = useMotionValue(0);
-
-                    function handleMouseMove({currentTarget, clientX, clientY}: React.MouseEvent) {
-        const {left, top, width, height} = currentTarget.getBoundingClientRect();
-                    mouseX.set((clientX - left) / width - 0.5);
-                    mouseY.set((clientY - top) / height - 0.5);
-    }
-
-                    const rotateX = useTransform(mouseY, [-0.5, 0.5], [10, -10]);
-                    const rotateY = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
-
-                    return (
-                    <Section id="resources" className="bg-[#111] overflow-hidden min-h-[90vh] py-24 flex items-center">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,215,0,0.03),transparent_70%)]" />
-
-                        <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center px-4">
-                            <div className="order-2 md:order-1 relative z-10">
-                                <RevealText>
-                                    <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-4 block">Confidential Strategy</span>
-                                    <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
-                                        The $2,000,000 <br /> Protocol.
-                                    </h2>
-                                    <p className="text-gray-400 mb-10 max-w-md leading-relaxed font-light">
-                                        This isn't a brochure. It's the mathematical framework I use to engineer wealth. Access the exact roadmap used by my Top 1% clients.
-                                    </p>
-
-                                    <div className="bg-white/5 border border-white/10 p-2 flex flex-col md:flex-row gap-2 max-w-lg rounded-sm">
-                                        <div className="flex-1 flex items-center px-4">
-                                            <Terminal className="w-4 h-4 text-gray-500 mr-3" />
-                                            <input type="email" placeholder="ENTER_ACCESS_EMAIL" className="bg-transparent text-white w-full outline-none font-mono text-sm placeholder-gray-600 h-12" />
-                                        </div>
-                                        <PremiumButton className="text-xs px-6 py-3">Decrypt</PremiumButton>
-                                    </div>
-                                    <p className="font-mono text-[10px] text-gray-600 mt-4 uppercase"><span className="text-green-500">●</span> Secure Transmission 256-Bit</p>
-                                </RevealText>
-                            </div>
-
-                            {/* 3D Floating Book with Idle Animation - CENTERED & REVAMPED */}
-                            <div className="order-1 md:order-2 flex justify-center items-center perspective-1000 h-[600px] w-full" onMouseMove={handleMouseMove}>
-                                <motion.div
-                                    style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                                    animate={{ y: [0, -15, 0], rotateZ: [0, 1, 0] }}
-                                    transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                                    className="relative w-[340px] h-[480px] group cursor-pointer"
-                                >
-                                    {/* Front Cover */}
-                                    <div className="absolute inset-0 bg-[#080808] border border-yellow-500/30 rounded-r-sm shadow-[20px_20px_50px_rgba(0,0,0,0.5)] flex flex-col p-10 backface-hidden" style={{ transform: "translateZ(30px)" }}>
-                                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/leather.png')] opacity-30 mix-blend-overlay" />
-                                        <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-                                        <div className="mt-8 relative z-20">
-                                            <div className="w-10 h-10 rounded-full border border-yellow-500/50 flex items-center justify-center mb-6"><Award className="w-5 h-5 text-yellow-500" /></div>
-                                            <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Classified</span>
-                                            <span className="font-serif text-4xl text-white leading-[0.9]">Wealth<br />Architecture</span>
-                                        </div>
-                                        <div className="mt-auto text-right relative z-20">
-                                            <span className="font-serif text-7xl text-white/5 font-bold block leading-none">01</span>
-                                            <span className="font-mono text-[10px] text-yellow-500 uppercase tracking-[0.3em]">Edition</span>
-                                        </div>
-                                        {/* Hover Sheen */}
-                                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-30" />
-                                    </div>
-
-                                    {/* Back Cover */}
-                                    <div className="absolute inset-0 bg-[#080808] border border-white/5 rounded-l-sm" style={{ transform: "translateZ(-30px) rotateY(180deg)" }} />
-
-                                    {/* Spine (Left) - Thick & Darker */}
-                                    <div className="absolute top-0 bottom-0 w-[60px] bg-[#030303] border-l border-r border-white/5 flex items-center justify-center" style={{ transform: "rotateY(-90deg) translateZ(30px)", left: 0 }}>
-                                        <span className="rotate-90 whitespace-nowrap text-xs font-mono text-yellow-600/50 uppercase tracking-[0.2em] w-full text-center">Confidential</span>
-                                    </div>
-
-                                    {/* Pages (Right) */}
-                                    <div className="absolute top-2 bottom-2 w-[58px] bg-[#e3e3e3]" style={{ transform: "rotateY(90deg) translateZ(308px)", right: 0, backgroundImage: "linear-gradient(to right, #ccc 1px, transparent 1px)", backgroundSize: "3px 100%" }} />
-
-                                    {/* Pages (Top) */}
-                                    <div className="absolute left-0 right-0 h-[58px] bg-[#e3e3e3]" style={{ transform: "rotateX(90deg) translateZ(30px)", top: 0, backgroundImage: "linear-gradient(to bottom, #ccc 1px, transparent 1px)", backgroundSize: "100% 3px" }} />
-
-                                    {/* Pages (Bottom) */}
-                                    <div className="absolute left-0 right-0 h-[58px] bg-[#e3e3e3]" style={{ transform: "rotateX(-90deg) translateZ(448px)", bottom: 0, backgroundImage: "linear-gradient(to bottom, #ccc 1px, transparent 1px)", backgroundSize: "100% 3px" }} />
-
-                                    {/* Shadow */}
-                                    <div className="absolute -bottom-16 left-10 right-10 h-4 bg-black/50 blur-xl rounded-[100%]" />
-                                </motion.div>
-                            </div>
-                        </div>
-                    </Section>
-                    );
-};
-
-                    /* -------------------------------------------------------------------------- */
-                    /* CTA (THE HORIZON) - CLEAN & SLEEK                 */
-                    /* -------------------------------------------------------------------------- */
-
-                    const CTA = ({onOpenContact}: {onOpenContact: () => void }) => {
-    return (
-                    <Section className="bg-[#050505] text-white min-h-[80vh] relative overflow-hidden flex items-center justify-center border-t border-white/10">
-                        {/* Darker Architecture Background */}
-                        <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_100%)] z-10" />
-                        <div className="absolute inset-0 opacity-20 pointer-events-none z-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111), repeating-linear-gradient(45deg, #111 25%, #050505 25%, #050505 75%, #111 75%, #111)', backgroundPosition: '0 0, 10px 10px', backgroundSize: '20px 20px' }} />
-
-                        <div className="absolute top-12 left-12 w-32 h-32 border-l border-t border-white/20 opacity-50 z-10" />
-                        <div className="absolute bottom-12 right-12 w-32 h-32 border-r border-b border-white/20 opacity-50 z-10" />
-
-                        {/* Giant Watermark */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-signature text-[20vw] text-white/5 whitespace-nowrap z-0 pointer-events-none select-none">
-                            Zaid Haroon
-                        </div>
-
-                        <div className="relative z-20 w-full max-w-5xl text-center p-12 md:p-20 border border-white/5 bg-black/50 backdrop-blur-sm rounded-sm">
-                            <RevealText>
-                                <span className="inline-block py-1 px-3 border border-yellow-500/30 rounded-full bg-yellow-500/5 text-[10px] uppercase tracking-widest text-yellow-500 mb-8">
-                                    Executive Private Client Service
-                                </span>
-                                <h2 className="text-5xl md:text-8xl font-serif mb-8 tracking-tight text-white mix-blend-difference drop-shadow-2xl">
-                                    Begin Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Legacy.</span>
-                                </h2>
-                                <p className="text-gray-400 mb-12 leading-relaxed max-w-xl mx-auto font-light text-lg">
-                                    The window of opportunity in Singapore real estate is narrow. Strategy is the only leverage. Let's build your $2M roadmap.
-                                </p>
-
-                                <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                                    <PremiumButton onClick={onOpenContact} className="px-12 py-6 text-base w-full md:w-auto">
-                                        Initiate Strategy Session <ArrowRight className="w-5 h-5" />
-                                    </PremiumButton>
-                                    <span className="text-xs text-gray-500 font-mono uppercase tracking-widest">or WhatsApp Direct</span>
-                                </div>
-                            </RevealText>
-                        </div>
-                    </Section>
-                    );
-};
-
-const Footer = () => (
-                    <footer className="w-full py-12 bg-black border-t border-white/5 flex flex-col items-center justify-center">
-                        <span className="font-serif text-2xl text-white mb-4">ZAID HAROON</span>
-                        <p className="text-gray-600 text-[10px] tracking-widest uppercase">
-                            © {new Date().getFullYear()} Zaid Haroon Real Estate. SRI Pte Ltd. All Rights Reserved.
-                        </p>
-                    </footer>
-                    );
-
-                    /* -------------------------------------------------------------------------- */
-                    /* MAIN APP                                    */
-                    /* -------------------------------------------------------------------------- */
-
-                    export default function App() {
-    const [isVideoOpen, setIsVideoOpen] = useState(false);
-                    const [isContactOpen, setIsContactOpen] = useState(false);
-                    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-                    return (
-                    <div className="bg-black min-h-screen selection:bg-yellow-500 selection:text-black font-sans scroll-smooth">
-                        <NoiseOverlay />
-
-                        <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
-                        <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
-                        <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} onOpenContact={() => setIsContactOpen(true)} />
-
-                        <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center mix-blend-difference text-white pointer-events-none">
-                            {/* Semi-transparent background for sticky menu */}
-                            <div className="absolute inset-0 bg-black/50 backdrop-blur-md pointer-events-none -z-10" />
-
-                            <span className="font-bold tracking-tighter text-xl pointer-events-auto font-serif">ZH.</span>
-
-                            {/* Desktop Menu - Centered */}
-                            <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 pointer-events-auto">
-                                {[
-                                    { name: 'The Blueprint', link: '#blueprint' },
-                                    { name: 'Case Studies', link: '#case-studies' },
-                                    { name: 'About Zaid', link: '#profile' },
-                                    { name: 'Resources', link: '#resources' }
-                                ].map((item) => (
-                                    <a key={item.name} href={item.link} className="text-xs font-bold uppercase tracking-widest hover:text-yellow-500 transition-colors">
-                                        {item.name}
-                                    </a>
-                                ))}
-                            </div>
-
-                            {/* Right Actions */}
-                            <div className="flex items-center pointer-events-auto">
-                                <button onClick={() => setIsContactOpen(true)} className="hidden md:block text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-white/5 hover:bg-white hover:text-black backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-300">
-                                    Book Consultation
-                                </button>
-
-                                {/* Mobile Menu Button */}
-                                <button onClick={() => setIsMenuOpen(true)} className="md:hidden text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-black/10 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2">
-                                    <Menu className="w-3 h-3" /> Menu
-                                </button>
-                            </div>
-                        </nav>
-
-                        <main>
-                            <Hero onOpenVideo={() => setIsVideoOpen(true)} onOpenContact={() => setIsContactOpen(true)} />
-                            <Marquee />
-                            <Credentials />
-                            <Profile />
-                            <Methodology onOpenContact={() => setIsContactOpen(true)} />
-                            <CaseStudies />
-                            <FreeResource />
-                            <CTA onOpenContact={() => setIsContactOpen(true)} />
-                        </main>
-
-                        <Footer />
+                <div className="w-full relative z-10">
+                    <div className="flex justify-center mb-12">
+                        <span className="text-yellow-500 font-mono text-xs uppercase tracking-[0.3em]">Declassified Operations</span>
                     </div>
-                    );
-}
+
+                    <div className="flex w-full overflow-hidden mask-linear-fade">
+                        <motion.div
+                            className="flex gap-8 px-4"
+                            animate={{ x: ["0%", "-33.33%"] }}
+                            transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+                        >
+                            {marqueeItems.map((item, index) => (
+                                <div
+                                    key={`${item.title}-${index}`}
+                                    className="w-[300px] md:w-[400px] flex-shrink-0 bg-[#111] border border-white/5 p-8 relative group hover:border-yellow-500/30 transition-colors cursor-pointer"
+                                    onClick={() => setSelectedStudy(item)}
+                                >
+                                    <div className="absolute top-4 right-4">
+                                        <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-yellow-500 transition-colors" />
+                                    </div>
+                                    <span className="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-2 block">{item.category}</span>
+                                    <h3 className="text-2xl font-serif text-white mb-4 italic">{item.title}</h3>
+
+                                    <div className="mt-4 opacity-100 transition-opacity duration-300">
+                                        <div>
+                                            <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Problem</span>
+                                            <p className="text-sm text-gray-300 font-light line-clamp-1">{item.problem}</p>
+                                        </div>
+                                        <div className="mt-2">
+                                            <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Outcome</span>
+                                            <p className="text-sm text-white font-medium">{item.result}</p>
+                                        </div>
+                                    </div>
+                                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </div>
+
+                <CaseStudyModal isOpen={!!selectedStudy} onClose={() => setSelectedStudy(null)} data={selectedStudy} />
+            </Section>
+        );
+    };
+
+    /* -------------------------------------------------------------------------- */
+    /* PROFILE SECTION - EDITORIAL REVAMP                             */
+    /* -------------------------------------------------------------------------- */
+
+    const Profile = () => {
+        return (
+            <Section id="profile" className="bg-[#080808] overflow-hidden py-32 min-h-[90vh] flex items-center justify-center relative">
+                {/* Background Texture */}
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none" />
+
+                <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
+
+                    {/* Parallax Image Card - Updated Image */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1 }}
+                        className="relative h-[600px] w-full overflow-hidden rounded-sm"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10" />
+                        <motion.img
+                            initial={{ scale: 1.1 }}
+                            whileInView={{ scale: 1 }}
+                            transition={{ duration: 2 }}
+                            src="/zaid-profile-gold.png"
+                            alt="Zaid Haroon"
+                            className="w-full h-full object-cover object-top opacity-90"
+                        />
+                        <div className="absolute inset-0 border-[1px] border-white/10 m-6 pointer-events-none z-20" />
+                    </motion.div>
+
+                    {/* Editorial Content */}
+                    <div className="relative">
+                        <RevealText>
+                            <h3 className="text-4xl md:text-6xl font-serif leading-[1.1] mb-8 text-white">
+                                "I don't just sell houses. <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600">I architect your legacy.</span>"
+                            </h3>
+                        </RevealText>
+
+                        <RevealText delay={0.2}>
+                            <div className="space-y-6 text-lg font-light text-gray-400 leading-relaxed mb-12 border-l border-white/10 pl-6">
+                                <p>Being the first Muslim to hit #1 at SRI wasn't about the accolades. It was about proving that <span className="text-white italic">Tawakkul</span> (Trust in God) paired with relentless, ethical strategy wins in any market.</p>
+                                <p>My clients aren't looking for a quick flip. They are looking for safety, growth, and a retirement that honors their years of hard work.</p>
+                            </div>
+
+                            {/* Signature Block - New Font */}
+                            <div className="mt-8">
+                                <div className="font-signature text-6xl text-white/80 mb-2 transform -rotate-2 origin-left">
+                                    Zaid Haroon
+                                </div>
+                                <p className="text-xs uppercase tracking-widest text-gray-500">Zaid Haroon • Senior Strategist</p>
+                            </div>
+                        </RevealText>
+                    </div>
+                </div>
+            </Section>
+        );
+    };
+
+    /* -------------------------------------------------------------------------- */
+    /* FREE RESOURCE (THE DOSSIER) - ANIMATED BOOK      */
+    /* -------------------------------------------------------------------------- */
+
+    const FreeResource = () => {
+        const mouseX = useMotionValue(0);
+        const mouseY = useMotionValue(0);
+
+        function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+            const { left, top, width, height } = currentTarget.getBoundingClientRect();
+            mouseX.set((clientX - left) / width - 0.5);
+            mouseY.set((clientY - top) / height - 0.5);
+        }
+
+        const rotateX = useTransform(mouseY, [-0.5, 0.5], [10, -10]);
+        const rotateY = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
+
+        return (
+            <Section id="resources" className="bg-[#111] overflow-hidden min-h-[90vh] py-24 flex items-center">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,215,0,0.03),transparent_70%)]" />
+
+                <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center px-4">
+                    <div className="order-2 md:order-1 relative z-10">
+                        <RevealText>
+                            <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-4 block">Confidential Strategy</span>
+                            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
+                                The $2,000,000 <br /> Protocol.
+                            </h2>
+                            <p className="text-gray-400 mb-10 max-w-md leading-relaxed font-light">
+                                This isn't a brochure. It's the mathematical framework I use to engineer wealth. Access the exact roadmap used by my Top 1% clients.
+                            </p>
+
+                            <div className="bg-white/5 border border-white/10 p-2 flex flex-col md:flex-row gap-2 max-w-lg rounded-sm">
+                                <div className="flex-1 flex items-center px-4">
+                                    <Terminal className="w-4 h-4 text-gray-500 mr-3" />
+                                    <input type="email" placeholder="ENTER_ACCESS_EMAIL" className="bg-transparent text-white w-full outline-none font-mono text-sm placeholder-gray-600 h-12" />
+                                </div>
+                                <PremiumButton className="text-xs px-6 py-3">Decrypt</PremiumButton>
+                            </div>
+                            <p className="font-mono text-[10px] text-gray-600 mt-4 uppercase"><span className="text-green-500">●</span> Secure Transmission 256-Bit</p>
+                        </RevealText>
+                    </div>
+
+                    {/* 3D Floating Book with Idle Animation - CENTERED & REVAMPED */}
+                    <div className="order-1 md:order-2 flex justify-center items-center perspective-1000 h-[600px] w-full" onMouseMove={handleMouseMove}>
+                        <motion.div
+                            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+                            animate={{ y: [0, -15, 0] }}
+                            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                            className="relative w-[380px] h-[550px] group cursor-pointer"
+                        >
+                            {/* Front Cover */}
+                            <div className="absolute inset-0 bg-[#080808] border border-yellow-500/30 rounded-r-sm shadow-[20px_20px_50px_rgba(0,0,0,0.5)] flex flex-col p-10 backface-hidden" style={{ transform: "translateZ(30px)" }}>
+                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/leather.png')] opacity-30 mix-blend-overlay" />
+                                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+                                <div className="mt-8 relative z-20">
+                                    <div className="w-10 h-10 rounded-full border border-yellow-500/50 flex items-center justify-center mb-6"><Award className="w-5 h-5 text-yellow-500" /></div>
+                                    <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Classified</span>
+                                    <span className="font-serif text-5xl text-white leading-[0.9]">Wealth<br />Architecture</span>
+                                </div>
+                                <div className="mt-auto text-right relative z-20">
+                                    <span className="font-serif text-8xl text-white/5 font-bold block leading-none">01</span>
+                                    <span className="font-mono text-[10px] text-yellow-500 uppercase tracking-[0.3em]">Edition</span>
+                                </div>
+                                {/* Hover Sheen */}
+                                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-30" />
+                            </div>
+
+                            {/* Back Cover */}
+                            <div className="absolute inset-0 bg-[#080808] border border-white/5 rounded-l-sm" style={{ transform: "translateZ(-30px) rotateY(180deg)" }} />
+
+                            {/* Spine (Left) - Thick & Darker */}
+                            <div className="absolute top-0 bottom-0 w-[60px] bg-[#030303] border-l border-r border-white/5 flex items-center justify-center" style={{ transform: "rotateY(-90deg) translateZ(30px)", left: 0 }}>
+                                <span className="rotate-90 whitespace-nowrap text-xs font-mono text-yellow-600/50 uppercase tracking-[0.2em] w-full text-center">Confidential</span>
+                            </div>
+
+                            {/* Pages (Right) */}
+                            <div className="absolute top-2 bottom-2 w-[58px] bg-[#e3e3e3]" style={{ transform: "rotateY(90deg) translateZ(348px)", right: 0, backgroundImage: "linear-gradient(to right, #ccc 1px, transparent 1px)", backgroundSize: "3px 100%" }} />
+
+                            {/* Pages (Top) */}
+                            <div className="absolute left-0 right-0 h-[58px] bg-[#1a1a1a]" style={{ transform: "rotateX(90deg) translateZ(30px)", top: 0, backgroundImage: "linear-gradient(to bottom, #333 1px, transparent 1px)", backgroundSize: "100% 3px" }} />
+
+                            {/* Pages (Bottom) */}
+                            <div className="absolute left-0 right-0 h-[58px] bg-[#e3e3e3]" style={{ transform: "rotateX(-90deg) translateZ(518px)", bottom: 0, backgroundImage: "linear-gradient(to bottom, #ccc 1px, transparent 1px)", backgroundSize: "100% 3px" }} />
+
+                            {/* Shadow */}
+                            <div className="absolute -bottom-16 left-10 right-10 h-4 bg-black/50 blur-xl rounded-[100%]" />
+                        </motion.div>
+                    </div>
+                </div>
+            </Section>
+        );
+    };
+
+    /* -------------------------------------------------------------------------- */
+    /* CTA (THE HORIZON) - CLEAN & SLEEK                 */
+    /* -------------------------------------------------------------------------- */
+
+    const CTA = ({ onOpenContact }: { onOpenContact: () => void }) => {
+        return (
+            <Section className="bg-[#050505] text-white min-h-[80vh] relative overflow-hidden flex items-center justify-center border-t border-white/10">
+                {/* Darker Architecture Background */}
+                <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_100%)] z-10" />
+                <div className="absolute inset-0 opacity-20 pointer-events-none z-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111), repeating-linear-gradient(45deg, #111 25%, #050505 25%, #050505 75%, #111 75%, #111)', backgroundPosition: '0 0, 10px 10px', backgroundSize: '20px 20px' }} />
+
+                <div className="absolute top-12 left-12 w-32 h-32 border-l border-t border-white/20 opacity-50 z-10" />
+                <div className="absolute bottom-12 right-12 w-32 h-32 border-r border-b border-white/20 opacity-50 z-10" />
+
+                {/* Giant Watermark */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-signature text-[20vw] text-white/5 whitespace-nowrap z-0 pointer-events-none select-none">
+                    Zaid Haroon
+                </div>
+
+                <div className="relative z-20 w-full max-w-5xl text-center p-12 md:p-20 border border-white/5 bg-black/50 backdrop-blur-sm rounded-sm">
+                    <RevealText>
+                        <span className="inline-block py-1 px-3 border border-yellow-500/30 rounded-full bg-yellow-500/5 text-[10px] uppercase tracking-widest text-yellow-500 mb-8">
+                            Executive Private Client Service
+                        </span>
+                        <h2 className="text-5xl md:text-8xl font-serif mb-8 tracking-tight text-white mix-blend-difference drop-shadow-2xl">
+                            Begin Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Legacy.</span>
+                        </h2>
+                        <p className="text-gray-400 mb-12 leading-relaxed max-w-xl mx-auto font-light text-lg">
+                            The window of opportunity in Singapore real estate is narrow. Strategy is the only leverage. Let's build your $2M roadmap.
+                        </p>
+
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                            <PremiumButton onClick={onOpenContact} className="px-12 py-6 text-base w-full md:w-auto">
+                                Initiate Strategy Session <ArrowRight className="w-5 h-5" />
+                            </PremiumButton>
+                            <span className="text-xs text-gray-500 font-mono uppercase tracking-widest">or WhatsApp Direct</span>
+                        </div>
+                    </RevealText>
+                </div>
+            </Section>
+        );
+    };
+
+    const Footer = () => (
+        <footer className="w-full py-12 bg-black border-t border-white/5 flex flex-col items-center justify-center">
+            <span className="font-serif text-2xl text-white mb-4">ZAID HAROON</span>
+            <p className="text-gray-600 text-[10px] tracking-widest uppercase">
+                © {new Date().getFullYear()} Zaid Haroon Real Estate. SRI Pte Ltd. All Rights Reserved.
+            </p>
+        </footer>
+    );
+
+    /* -------------------------------------------------------------------------- */
+    /* MAIN APP                                    */
+    /* -------------------------------------------------------------------------- */
+
+    export default function App() {
+        const [isVideoOpen, setIsVideoOpen] = useState(false);
+        const [isContactOpen, setIsContactOpen] = useState(false);
+        const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+        return (
+            <div className="bg-black min-h-screen selection:bg-yellow-500 selection:text-black font-sans scroll-smooth">
+                <NoiseOverlay />
+
+                <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
+                <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+                <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} onOpenContact={() => setIsContactOpen(true)} />
+
+                <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center mix-blend-difference text-white pointer-events-none">
+                    {/* Semi-transparent background for sticky menu */}
+                    <div className="absolute inset-0 bg-black/50 backdrop-blur-md pointer-events-none -z-10" />
+
+                    <span className="font-bold tracking-tighter text-xl pointer-events-auto font-serif">ZH.</span>
+
+                    {/* Desktop Menu - Centered */}
+                    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 pointer-events-auto">
+                        {[
+                            { name: 'The Blueprint', link: '#blueprint' },
+                            { name: 'Case Studies', link: '#case-studies' },
+                            { name: 'About Zaid', link: '#profile' },
+                            { name: 'Resources', link: '#resources' }
+                        ].map((item) => (
+                            <a key={item.name} href={item.link} className="text-xs font-bold uppercase tracking-widest hover:text-yellow-500 transition-colors">
+                                {item.name}
+                            </a>
+                        ))}
+                    </div>
+
+                    {/* Right Actions */}
+                    <div className="flex items-center pointer-events-auto">
+                        <button onClick={() => setIsContactOpen(true)} className="hidden md:block text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-white/5 hover:bg-white hover:text-black backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-300">
+                            Book Consultation
+                        </button>
+
+                        {/* Mobile Menu Button */}
+                        <button onClick={() => setIsMenuOpen(true)} className="md:hidden text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-black/10 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2">
+                            <Menu className="w-3 h-3" /> Menu
+                        </button>
+                    </div>
+                </nav>
+
+                <main>
+                    <Hero onOpenVideo={() => setIsVideoOpen(true)} onOpenContact={() => setIsContactOpen(true)} />
+                    <Marquee />
+                    <Credentials />
+                    <Profile />
+                    <Methodology onOpenContact={() => setIsContactOpen(true)} />
+                    <CaseStudies />
+                    <FreeResource />
+                    <CTA onOpenContact={() => setIsContactOpen(true)} />
+                </main>
+
+                <Footer />
+            </div>
+        );
+    }
