@@ -624,38 +624,35 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
                                 className="cursor-pointer"
                             />
 
-                            {/* Active Point Indicator - ELEGANT DIAMOND */}
-                            {/* We use a group for the glow ring, calculating cx/cy dynamically to ensure SVG-space positioning */}
+                            {/* Active Point Indicator - CLASSIC CUT DIAMOND */}
                             <g>
-                                {/* Outer Glow Ring */}
-                                <motion.circle
-                                    animate={{
-                                        cx: activeStep === 0 ? 5 : activeStep === 1 ? 40 : 95,
-                                        cy: activeStep === 0 ? 88 : activeStep === 1 ? 60 : 10
-                                    }}
-                                    r="8"
-                                    fill="none"
-                                    stroke="#EAB308"
-                                    strokeWidth="0.5"
-                                    opacity="0.5"
-                                    initial={{ scale: 1, opacity: 0.5 }}
-                                    whileInView={{ scale: [1, 1.3, 1], opacity: [0.5, 0.2, 0.5] }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                                />
-
-                                {/* Diamond Shape - Dynamic Path Calculation */}
+                                {/* Diamond Shape - Detailed Side View */}
                                 <motion.path
                                     animate={{
                                         d: activeStep === 0
-                                            ? "M 5 84 L 9 88 L 5 92 L 1 88 Z"  /* (5,88) -> Top:5,84 Right:9,88 Bottom:5,92 Left:1,88 */
+                                            ? "M 2 85 L 8 85 L 10 88 L 5 94 L 0 88 Z"  /* (5,88) Center */
                                             : activeStep === 1
-                                                ? "M 40 56 L 44 60 L 40 64 L 36 60 Z" /* (40,60) */
-                                                : "M 95 6 L 99 10 L 95 14 L 91 10 Z" /* (95,10) */
+                                                ? "M 37 57 L 43 57 L 45 60 L 40 66 L 35 60 Z" /* (40,60) Center */
+                                                : "M 92 7 L 98 7 L 100 10 L 95 16 L 90 10 Z" /* (95,10) Center */
                                     }}
                                     fill="#000"
                                     stroke="#EAB308"
-                                    strokeWidth="1.5"
-                                    className="drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]"
+                                    strokeWidth="1"
+                                    className="drop-shadow-[0_0_10px_rgba(234,179,8,1)]"
+                                />
+                                {/* Inner Facet Line (Top shine) */}
+                                <motion.path
+                                    animate={{
+                                        d: activeStep === 0
+                                            ? "M 2 85 L 5 88 L 8 85"
+                                            : activeStep === 1
+                                                ? "M 37 57 L 40 60 L 43 57"
+                                                : "M 92 7 L 95 10 L 98 7"
+                                    }}
+                                    fill="none"
+                                    stroke="#EAB308"
+                                    strokeWidth="0.5"
+                                    opacity="0.8"
                                 />
                             </g>
                         </svg>
