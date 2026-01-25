@@ -942,7 +942,7 @@ const FreeResource = () => {
     }
 
     const rotateX = useTransform(mouseY, [-0.5, 0.5], [10, -10]);
-    const rotateY = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
+    const rotateY = useTransform(mouseX, [-0.5, 0.5], [10, 30]); // Biased to right tilt
 
     return (
         <Section id="resources" className="bg-[#111] overflow-hidden min-h-[90vh] py-24 flex items-center">
@@ -974,7 +974,7 @@ const FreeResource = () => {
                 <div className="order-1 md:order-2 flex justify-center items-center perspective-1000 h-[600px] w-full" onMouseMove={handleMouseMove}>
                     <motion.div
                         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                        animate={{ y: [0, -15, 0] }}
+                        animate={{ y: [0, -15, 0], rotateZ: 5 }} // Added static right tilt
                         transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                         className="relative w-[380px] h-[550px] group cursor-pointer"
                     >
