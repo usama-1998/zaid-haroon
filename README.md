@@ -1,34 +1,54 @@
-# Zaid Haroon Portfolio
+# Zaid Haroon - Wealth Architecture
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A highly bespoke, premium real estate portfolio management landing page built for High-Net-Worth Individuals (HNWI) in Singapore. This project emphasizes a "dark luxury" aesthetic with advanced animations and interactive financial visualizations.
+
+![Zaid Haroon Profile](public/zaid-profile-gold.png)
+
+## Tech Stack
+*   **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+*   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+*   **Animations**: [Framer Motion](https://www.framer.com/motion/)
+*   **Icons**: [Lucide React](https://lucide.dev/)
+
+## Key Features
+
+### 1. The Blueprint Visualizer
+An interactive, animated SVG projection graph that simulates live market tracking and wealth projection.
+*   **Fluctuating Graph**: Simulates organic market movement.
+*   **Scanner Effect**: Vertical scan line for a technical/auditing feel.
+*   **Live Data HUD**: Floating data points and coordinates.
+
+### 2. Confidential Dossier (3D Book)
+A CSS-3D transformed book component.
+*   **True Depth**: Features realistic spine, covers, and page thickness.
+*   **Interactive**: Responds to mouse movement with parallax rotation.
+
+### 3. Case Studies Marquee
+A full-width, infinite scrolling ticker of success stories.
+*   **Modal Interaction**: Clicking any case study opens a detailed "Declassified" mission file.
+
+### 4. Beast Mode Branding
+*   **Golden Gradient**: Custom processed profile imagery.
+*   **Signature**: Bespoke signature watermark.
+*   **Architectural Grid**: Subtle animated backdrops.
 
 ## Getting Started
 
-First, run the development server:
+1.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.  **Build for Production**:
+    ```bash
+    npm run build
+    ```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Asset Credits
+*   **Images**: Unsplash (Premium Real Estate)
+*   **Fonts**: Inter (Sans), Playfair Display (Serif), JetBrains Mono (Code), Great Vibes (Signature).

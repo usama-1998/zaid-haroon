@@ -551,7 +551,6 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
 
             <div className="w-full max-w-7xl relative z-10 flex flex-col md:flex-row gap-12 md:gap-24 items-center">
 
-                {/* Visualizer - Redesigned Graph */}
                 <div className="w-full md:w-1/2 aspect-square relative border border-white/10 bg-[#080808]/80 backdrop-blur-sm rounded-xl overflow-hidden group shadow-[0_0_50px_rgba(234,179,8,0.05)]">
                     {/* Bespoke Grid / HUD Background inside the Visualizer */}
                     <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-yellow-900/40 via-black to-black" />
@@ -564,103 +563,110 @@ const Methodology = ({ onOpenContact }: { onOpenContact: () => void }) => {
                     <div className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-xl" />
                     <div className="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/10 rounded-bl-xl" />
 
-                    d="M0,90 C30,85 60,60 100,10"
-                    fill="none"
-                    stroke="#EAB308"
-                    strokeWidth="2"
-                    initial={{ pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut" }}
-                            />
+                    {/* Data Overlay */}
+                    <div className="absolute top-4 left-4 z-20 flex flex-col gap-1">
+                        <div className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                            <span className="text-[10px] uppercase font-mono text-green-500">Live Scanning</span>
+                        </div>
+                        <span className="text-[10px] font-mono text-gray-500">LAT: 1.3521 // LNG: 103.8198</span>
+                    </div>
 
-                    {/* Area under curve */}
-                    <motion.path
-                        d="M0,90 C30,85 60,60 100,10 V100 H0 Z"
-                        fill="url(#gradientGold)"
-                        className="opacity-20"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 0.2 }}
-                        transition={{ duration: 1, delay: 0.5 }}
+                    {/* Animated SCANNER */}
+                    <motion.div
+                        animate={{ left: ["0%", "100%"] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-0 bottom-0 w-[1px] bg-yellow-500/50 z-20 shadow-[0_0_15px_rgba(234,179,8,1)]"
                     />
-                    <defs>
-                        <linearGradient id="gradientGold" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="#EAB308" />
-                            <stop offset="100%" stopColor="transparent" />
-                        </linearGradient>
-                    </defs>
 
-                    {/* Highlight Points based on Active Step */}
-                    {/* Step 1: Foundation */}
-                    <motion.circle cx="0" cy="90" r="2" fill="#EAB308" stroke="black" strokeWidth="0.5" animate={{ scale: activeStep >= 0 ? 1 : 0.5, opacity: activeStep >= 0 ? 1 : 0.5 }} />
-                    {/* Step 2: Acceleration */}
-                    <motion.circle cx="50" cy="70" r="2" fill="#EAB308" stroke="black" strokeWidth="0.5" animate={{ scale: activeStep >= 1 ? 1 : 0.5, opacity: activeStep >= 1 ? 0.5 : 0 }} />
-                    {/* Step 3: Target */}
-                    <motion.circle cx="100" cy="10" r="3" fill="#EAB308" stroke="white" strokeWidth="1" animate={{ scale: activeStep >= 2 ? 1.5 : 1 }} />
+                    <svg className="absolute bottom-0 left-0 w-full h-full z-10 p-8" preserveAspectRatio="none">
+                        {/* Market Average - Static Faint Line */}
+                        <path d="M0 300 C 100 290, 200 280, 300 280 S 400 270, 500 270" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="5,5" />
 
-                    {/* Floating HUD Label attached to Active Point */}
-                    <motion.g
-                        animate={{
-                            x: activeStep === 0 ? 5 : activeStep === 1 ? 55 : 80,
-                            y: activeStep === 0 ? 80 : activeStep === 1 ? 60 : 15
-                        }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                    >
-                        <rect width="35" height="12" fill="#111" stroke="#333" strokeWidth="0.2" rx="1" />
-                        <text x="17.5" y="8" textAnchor="middle" className="text-[4px] fill-white font-mono font-bold">
-                            {activeStep === 0 ? "START: $0" : activeStep === 1 ? "GROWTH: +150%" : "TARGET: $2.5M"}
-                        </text>
-                    </motion.g>
-                </svg>
-            </div>
+                        {/* THE BLUEPRINT - Animated "Alive" Line */}
+                        <motion.path
+                            animate={{
+                                d: [
+                                    "M0 300 C 100 300, 200 200, 300 150 S 400 50, 500 20",
+                                    "M0 300 C 100 290, 200 210, 300 140 S 400 60, 500 10",
+                                    "M0 300 C 100 310, 200 190, 300 160 S 400 40, 500 30",
+                                    "M0 300 C 100 300, 200 200, 300 150 S 400 50, 500 20"
+                                ]
+                            }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            fill="none"
+                            stroke="#EAB308"
+                            strokeWidth="3"
+                            filter="url(#glow)"
+                        />
+                        <defs>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
 
-            <div className="absolute bottom-6 left-6 z-20">
-                <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-[10px] text-white/50 font-mono tracking-widest uppercase">System Active</span>
+                        {/* Floating Data Points */}
+                        <motion.circle cx="300" cy="150" r="4" fill="#EAB308" animate={{ cy: [150, 140, 160, 150] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
+                        <motion.circle cx="450" cy="50" r="4" fill="#EAB308" animate={{ cy: [50, 60, 40, 50] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
+                    </svg>
+
+                    <div className="absolute bottom-6 right-6 text-right z-20">
+                        <span className="block text-[10px] uppercase tracking-widest text-gray-400 mb-1">Your projected wealth over the next 5 years</span>
+                        <motion.span
+                            animate={{ opacity: [0.5, 1, 0.5] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="block text-4xl font-serif text-white leading-none"
+                        >
+                            $2.4M
+                        </motion.span>
+                        <span className="text-[10px] text-green-500 font-mono">+185% ROI</span>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-                {/* Right: The Text - Auto-Playing List */ }
-    <div className="w-full md:w-1/2 flex flex-col gap-4">
-        <div className="mb-8">
-            <span className="text-yellow-500 font-mono text-xs uppercase tracking-[0.2em] mb-4 block">The Blueprint</span>
-            <h2 className="text-4xl md:text-5xl font-serif text-white">
-                Reverse Engineering <br /> Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 to-yellow-600">Wealth.</span>
-            </h2>
-        </div>
+                {/* Right: The Text - Auto-Playing List */}
+                <div className="w-full md:w-1/2 flex flex-col gap-4">
+                    <div className="mb-8">
+                        <span className="text-yellow-500 font-mono text-xs uppercase tracking-[0.2em] mb-4 block">The Blueprint</span>
+                        <h2 className="text-4xl md:text-5xl font-serif text-white">
+                            Reverse Engineering <br /> Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 to-yellow-600">Wealth.</span>
+                        </h2>
+                    </div>
 
-        <BlueprintStep
-            number="01"
-            title="The 35-Year Roadmap"
-            desc="We don't start with property. We start with the end in mind. We calculate exactly what you need in 2050, then we build the mathematical bridge to cross that gap."
-            isActive={activeStep === 0}
-            onSelect={() => setActiveStep(0)}
-        />
-        <BlueprintStep
-            number="02"
-            title="Portfolio Architecture"
-            desc="Moving beyond 'buy and sell'. We structure your assets to compound. Your HDB is not a home; it is the first domino in a chain reaction designed to fund your future."
-            isActive={activeStep === 1}
-            onSelect={() => setActiveStep(1)}
-        />
-        <BlueprintStep
-            number="03"
-            title="Strict Execution"
-            desc="Plans fail without discipline. We execute with military precision, adjusting for market cycles, interest rates, and regulations to keep you on track to $2M."
-            isActive={activeStep === 2}
-            onSelect={() => setActiveStep(2)}
-        />
+                    <BlueprintStep
+                        number="01"
+                        title="The 35-Year Roadmap"
+                        desc="We don't start with property. We start with the end in mind. We calculate exactly what you need in 2050, then we build the mathematical bridge to cross that gap."
+                        isActive={activeStep === 0}
+                        onSelect={() => setActiveStep(0)}
+                    />
+                    <BlueprintStep
+                        number="02"
+                        title="Portfolio Architecture"
+                        desc="Moving beyond 'buy and sell'. We structure your assets to compound. Your HDB is not a home; it is the first domino in a chain reaction designed to fund your future."
+                        isActive={activeStep === 1}
+                        onSelect={() => setActiveStep(1)}
+                    />
+                    <BlueprintStep
+                        number="03"
+                        title="Strict Execution"
+                        desc="Plans fail without discipline. We execute with military precision, adjusting for market cycles, interest rates, and regulations to keep you on track to $2M."
+                        isActive={activeStep === 2}
+                        onSelect={() => setActiveStep(2)}
+                    />
 
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="mt-8"
-        >
-            <PremiumButton onClick={onOpenContact}>Start Your Blueprint</PremiumButton>
-        </motion.div>
-    </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="mt-8"
+                    >
+                        <PremiumButton onClick={onOpenContact}>Start Your Blueprint</PremiumButton>
+                    </motion.div>
+                </div>
             </div >
         </Section >
     );
