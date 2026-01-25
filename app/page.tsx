@@ -75,7 +75,7 @@ const PremiumButton = ({ children, onClick, className = "", variant = "primary" 
                 className
             )}
         >
-            <span className={cn("relative z-10 transition-colors duration-300", variant === "primary" ? "group-hover:text-white" : "group-hover:text-black")}>
+            <span className={cn("relative z-10 transition-colors duration-300 flex items-center gap-2", variant === "primary" ? "group-hover:text-white" : "group-hover:text-black")}>
                 {children}
             </span>
             <div className={cn(
@@ -752,7 +752,7 @@ const CTA = ({ onOpenContact }: { onOpenContact: () => void }) => {
                     </p>
 
                     <PremiumButton onClick={onOpenContact} className="px-12 py-6 text-base">
-                        Initiate Strategy Session <ArrowRight className="w-5 h-5 ml-2" />
+                        Initiate Strategy Session <ArrowRight className="w-5 h-5" />
                     </PremiumButton>
 
                     <div className="mt-12 flex items-center justify-center gap-8 text-[10px] uppercase tracking-widest text-gray-600">
