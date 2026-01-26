@@ -31,10 +31,10 @@ export const Honours = () => {
 
                 <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 w-full">
                     {[
-                        { img: "/seals/millionaire-black.png", title: "Millionaire Achiever" },
-                        { img: "/seals/billion-black.png", title: "Billion Dollar Club" },
-                        { img: "/seals/top-black.png", title: "#01 Top Achiever" },
-                        { img: "/seals/transaction-black.png", title: "Largest Transaction" }
+                        { img: "/seals/award img 1.webp", title: "SRI Billion Dollar Club" },
+                        { img: "/seals/award img 2.webp", title: "SRI Millionaire Achiever" },
+                        { img: "/seals/award img 3.webp", title: "SRI #01 Top Achiever" },
+                        { img: "/seals/award img 4.webp", title: "SRI Largest Transaction" }
                     ].map((award, idx) => (
                         <motion.div
                             key={idx}
@@ -43,15 +43,8 @@ export const Honours = () => {
                             transition={{ delay: idx * 0.1, duration: 0.8 }}
                             className="flex flex-col items-center group relative"
                         >
-                            {/* Rotating Gold Border Container */}
+                            {/* Award Image Container */}
                             <div className="relative w-36 h-36 md:w-48 md:h-48 mb-8 flex items-center justify-center">
-                                {/* Animated Outer Glow Ring */}
-                                <div className="absolute inset-[-4px] rounded-full bg-gradient-to-tr from-transparent via-yellow-600/40 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 animate-spin-slow" />
-
-                                {/* Rotating Border - Conic Gradient */}
-                                <div className="absolute inset-0 rounded-full p-[1px] bg-gradient-to-b from-white/10 to-transparent group-hover:p-[2px] transition-all duration-500 overflow-hidden">
-                                    <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_90deg,#EAB308_180deg,transparent_270deg)] opacity-0 group-hover:opacity-100 animate-spin-slow duration-700" style={{ animationDuration: '3s' }} />
-                                </div>
 
                                 {/* Inner Circle Background */}
                                 <div className="relative w-full h-full rounded-full bg-black border border-white/5 overflow-hidden group-hover:border-yellow-500/30 transition-colors duration-500 box-border z-10 p-1">
