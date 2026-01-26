@@ -6,25 +6,18 @@ import { Section, RevealText } from '../shared';
 
 export const Honours = () => {
     return (
-        <Section id="honours" className="bg-[#050505] py-20 relative overflow-hidden flex items-center justify-center">
+        <Section id="honours" className="bg-[#050505] py-20 relative flex items-center justify-center">
             {/* Dark Luxury Particles/Gradient */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(234,179,8,0.02),transparent_70%)]" />
 
             <div className="max-w-7xl w-full mx-auto px-6 relative z-10 flex flex-col items-center">
                 <div className="text-center mb-16">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="flex items-center justify-center gap-4 mb-6"
-                    >
-                        <img src="/sri-logo.png" alt="SRI" className="h-4 md:h-5 w-auto object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-opacity duration-700" />
-                        <div className="h-px w-8 bg-white/10" />
-                        <span className="font-mono text-[8px] md:text-[10px] text-white/30 tracking-[0.3em] uppercase">Corporate Accreditation</span>
-                    </motion.div>
+                    {/* SRI Logo Above Title */}
+                    <img src="/sri-logo.png" alt="SRI" className="h-12 md:h-16 w-auto object-contain mx-auto mb-6 brightness-0 invert opacity-40 hover:opacity-100 transition-opacity duration-700" />
 
                     <RevealText>
                         <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight">
-                            No. 1 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Top Achiever at SRI.</span>
+                            No. 1 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Top Achiever</span>
                         </h2>
                     </RevealText>
                 </div>

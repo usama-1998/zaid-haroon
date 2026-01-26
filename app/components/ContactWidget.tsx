@@ -84,8 +84,7 @@ export default function ContactWidget() {
             >
                 {/* Header */}
                 <div className="bg-[#075E54] p-4 text-white">
-                    <div className="flex justify-between items-start mb-4">
-                        <img src="/sri-logo.png" alt="SRI" className="h-4 w-auto object-contain brightness-0 invert opacity-90" />
+                    <div className="flex justify-end items-start">
                         <button
                             onClick={() => setIsOpen(false)}
                             className="text-white/80 hover:text-white transition-colors"
@@ -102,11 +101,7 @@ export default function ContactWidget() {
                             <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-[#075E54] rounded-full"></div>
                         </div>
                         <div>
-                            <h3 className="font-semibold text-base leading-tight">Zaid Haroon</h3>
-                            <p className="text-[10px] text-green-100 opacity-90 font-light leading-snug mt-0.5">
-                                Top 1% Wealth Architect <br />
-                                SRI Millionaire Achiever '22 / '23 / '24
-                            </p>
+                            <h3 className="font-semibold text-base leading-tight">Zaid's Assistant</h3>
                         </div>
                     </div>
                 </div>

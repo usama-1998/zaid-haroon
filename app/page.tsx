@@ -12,7 +12,6 @@ import { VideoModal, ContactModal, MenuOverlay } from './components/modals';
 // Sections
 import {
     Hero,
-    Credentials,
     Methodology,
     CaseStudies,
     Profile,
@@ -80,7 +79,6 @@ export default function App() {
                 <CaseStudies />
                 <FreeResource />
                 <CTA onOpenContact={() => setIsContactOpen(true)} />
-                <Credentials />
             </main>
 
             <Footer />
