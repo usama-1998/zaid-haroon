@@ -901,6 +901,12 @@ const Profile = () => {
                 {/* Editorial Content */}
                 <div className="relative">
                     <RevealText>
+                        <div className="flex items-center gap-4 mb-8">
+                            <img src="/sri-logo.png" alt="SRI" className="h-6 w-auto object-contain brightness-0 invert opacity-80" />
+                            <div className="h-px w-12 bg-white/10" />
+                            <span className="font-mono text-[10px] text-white/40 tracking-[0.2em] uppercase text-nowrap">Corporate Accreditation</span>
+                        </div>
+
                         <h3 className="text-4xl md:text-6xl font-serif leading-[1.1] mb-8 text-white">
                             "I don't just sell houses. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600">I architect your legacy.</span>"
@@ -911,6 +917,23 @@ const Profile = () => {
                         <div className="space-y-6 text-lg font-light text-gray-400 leading-relaxed mb-12 border-l border-white/10 pl-6">
                             <p>Being the first Muslim to hit #1 at SRI wasn't about the accolades. It was about proving that <span className="text-white italic">Tawakkul</span> (Trust in God) paired with relentless, ethical strategy wins in any market.</p>
                             <p>My clients aren't looking for a quick flip. They are looking for safety, growth, and a retirement that honors their years of hard work.</p>
+                        </div>
+
+                        {/* Honours & Awards Grid */}
+                        <div className="grid grid-cols-2 gap-4 mb-12">
+                            {[
+                                { year: "2022/23/24", title: "SRI Millionaire Achiever" },
+                                { year: "2024", title: "SRI Billion Dollar Club" },
+                                { year: "2024", title: "#01 SRI Top Achiever" },
+                                { year: "2023", title: "Largest Transaction Award" }
+                            ].map((award, idx) => (
+                                <div key={idx} className="p-4 border border-white/5 bg-white/0 hover:bg-white/5 transition-colors group">
+                                    <span className="block font-mono text-[10px] text-yellow-500/60 mb-1">{award.year}</span>
+                                    <p className="text-xs font-bold uppercase tracking-widest text-white/80 group-hover:text-white transition-colors">
+                                        {award.title}
+                                    </p>
+                                </div>
+                            ))}
                         </div>
 
                         {/* Signature Block - New Font */}
