@@ -919,17 +919,9 @@ const Profile = () => {
                             <p>My clients aren't looking for a quick flip. They are looking for safety, growth, and a retirement that honors their years of hard work.</p>
                         </div>
 
-                        {/* Signature Block & Award Strip - Reimagined */}
-                        <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8">
-                            <div>
-                                <div className="font-signature text-6xl text-white/80 mb-2 transform -rotate-2 origin-left">
-                                    Zaid Haroon
-                                </div>
-                                <p className="text-xs uppercase tracking-widest text-gray-500">Zaid Haroon • Senior Strategist</p>
-                            </div>
-
-                            {/* Award Strip - Integrated & Sleek */}
-                            <div className="flex gap-4 md:gap-6 self-start md:self-auto py-4">
+                        {/* Honours & Awards Strip - Expanded & Centered */}
+                        <div className="mt-12 w-full">
+                            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 py-8">
                                 {[
                                     { img: "/seals/millionaire-seal.png", title: "Millionaire" },
                                     { img: "/seals/billion-seal.png", title: "Billion $" },
@@ -938,24 +930,24 @@ const Profile = () => {
                                 ].map((award, idx) => (
                                     <motion.div
                                         key={idx}
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={{ opacity: 0, y: 30 }}
                                         whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.3 + (idx * 0.1) }}
-                                        whileHover={{ y: -10 }}
+                                        transition={{ delay: 0.2 + (idx * 0.1) }}
+                                        whileHover={{ y: -15, scale: 1.1 }}
                                         className="group relative"
                                     >
-                                        <div className="w-18 h-18 md:w-22 md:h-22 relative p-1 rounded-full overflow-hidden border border-white/5 bg-black/50">
-                                            {/* Glow Effect */}
-                                            <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 blur-xl transition-all duration-500 rounded-full" />
+                                        <div className="w-24 h-24 md:w-32 md:h-32 relative rounded-full overflow-hidden border border-white/5 bg-transparent">
+                                            {/* Intense Glow Effect */}
+                                            <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/15 blur-2xl transition-all duration-500 rounded-full" />
                                             <img
                                                 src={award.img}
                                                 alt={award.title}
-                                                className="w-full h-full object-cover filter brightness-110 contrast-110 opacity-90 group-hover:opacity-100 transition-all duration-500"
+                                                className="w-full h-full object-cover mix-blend-lighten filter brightness-110 contrast-110 opacity-90 group-hover:opacity-100 transition-all duration-500 drop-shadow-[0_0_20px_rgba(234,179,8,0.2)]"
                                             />
                                         </div>
-                                        {/* Tooltip */}
-                                        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 whitespace-nowrap z-30">
-                                            <span className="text-[7px] font-bold uppercase tracking-[0.2em] text-yellow-500 bg-black/90 px-3 py-1 border border-yellow-500/20 backdrop-blur-md rounded-full shadow-2xl">
+                                        {/* Floating Label */}
+                                        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 whitespace-nowrap z-30">
+                                            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-yellow-500 bg-black/90 px-4 py-1.5 border border-yellow-500/20 backdrop-blur-md rounded-full shadow-2xl">
                                                 {award.title}
                                             </span>
                                         </div>
