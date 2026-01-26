@@ -943,17 +943,17 @@ const Honours = () => {
 
                     <RevealText>
                         <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight">
-                            Institutional <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Excellence.</span>
+                            No. 1 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Top Achiever at SRI.</span>
                         </h2>
                     </RevealText>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 w-full">
                     {[
-                        { img: "/seals/millionaire-seal.png", title: "Millionaire Achiever" },
-                        { img: "/seals/billion-seal.png", title: "Billion Dollar Club" },
-                        { img: "/seals/top-seal.png", title: "#01 Top Achiever" },
-                        { img: "/seals/transaction-seal.png", title: "Largest Transaction" }
+                        { img: "/seals/millionaire-black.png", title: "Millionaire Achiever" },
+                        { img: "/seals/billion-black.png", title: "Billion Dollar Club" },
+                        { img: "/seals/top-black.png", title: "#01 Top Achiever" },
+                        { img: "/seals/transaction-black.png", title: "Largest Transaction" }
                     ].map((award, idx) => (
                         <motion.div
                             key={idx}
@@ -962,10 +962,7 @@ const Honours = () => {
                             transition={{ delay: idx * 0.1, duration: 0.8 }}
                             className="flex flex-col items-center group"
                         >
-                            <div className="relative w-32 h-32 md:w-44 md:h-44 mb-6 rounded-full overflow-hidden border border-white/5 bg-transparent">
-                                {/* Ambient Glow */}
-                                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 blur-[40px] transition-all duration-700 rounded-full scale-125 opacity-0 group-hover:opacity-100" />
-
+                            <div className="relative w-32 h-32 md:w-44 md:h-44 mb-6 rounded-full overflow-hidden border border-white/5 bg-black">
                                 <motion.div
                                     whileHover={{ scale: 1.1 }}
                                     className="w-full h-full relative z-10"
@@ -973,7 +970,7 @@ const Honours = () => {
                                     <img
                                         src={award.img}
                                         alt={award.title}
-                                        className="w-full h-full object-cover mix-blend-lighten filter brightness-110 contrast-110 transition-all duration-500"
+                                        className="w-full h-full object-cover filter brightness-110 contrast-110 transition-all duration-500"
                                     />
                                 </motion.div>
                             </div>
@@ -1187,13 +1184,13 @@ export default function App() {
 
             <main>
                 <Hero onOpenVideo={() => setIsVideoOpen(true)} onOpenContact={() => setIsContactOpen(true)} />
-                <Credentials />
-                <Profile />
                 <Honours />
+                <Profile />
                 <Methodology onOpenContact={() => setIsContactOpen(true)} />
                 <CaseStudies />
                 <FreeResource />
                 <CTA onOpenContact={() => setIsContactOpen(true)} />
+                <Credentials />
             </main>
 
             <Footer />
