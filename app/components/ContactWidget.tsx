@@ -84,25 +84,24 @@ export default function ContactWidget() {
             >
                 {/* Header */}
                 <div className="bg-[#075E54] p-4 text-white">
-                    <div className="flex justify-end items-start">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                            <div className="relative flex-shrink-0">
+                                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center overflow-hidden border border-white/30">
+                                    <img src="/support-profile.jpg" alt="Support" className="w-full h-full object-cover" />
+                                </div>
+                                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-[#075E54] rounded-full"></div>
+                            </div>
+                            <div>
+                                <h3 className="font-semibold text-base leading-tight">Zaid's Assistant</h3>
+                            </div>
+                        </div>
                         <button
                             onClick={() => setIsOpen(false)}
                             className="text-white/80 hover:text-white transition-colors"
                         >
                             <X size={20} />
                         </button>
-                    </div>
-
-                    <div className="flex items-center space-x-3">
-                        <div className="relative flex-shrink-0">
-                            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center overflow-hidden border border-white/30">
-                                <img src="/support-profile.jpg" alt="Support" className="w-full h-full object-cover" />
-                            </div>
-                            <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-[#075E54] rounded-full"></div>
-                        </div>
-                        <div>
-                            <h3 className="font-semibold text-base leading-tight">Zaid's Assistant</h3>
-                        </div>
                     </div>
                 </div>
 
