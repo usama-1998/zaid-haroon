@@ -10,6 +10,44 @@ A highly bespoke, premium real estate portfolio management landing page built fo
 *   **Animations**: [Framer Motion](https://www.framer.com/motion/)
 *   **Icons**: [Lucide React](https://lucide.dev/)
 
+## Project Structure
+
+The codebase follows a modular component architecture:
+
+```
+app/
+├── page.tsx                 # Main page (imports all components)
+├── layout.tsx               # Root layout
+├── globals.css              # Global styles
+└── components/
+    ├── utils.ts             # Utility functions (cn, constants)
+    ├── shared/              # Reusable UI components
+    │   ├── NoiseOverlay.tsx
+    │   ├── GridBackground.tsx
+    │   ├── RevealText.tsx
+    │   ├── PremiumButton.tsx
+    │   ├── Section.tsx
+    │   └── index.ts
+    ├── modals/              # Modal components
+    │   ├── VideoModal.tsx
+    │   ├── ContactModal.tsx
+    │   ├── CaseStudyModal.tsx
+    │   ├── MenuOverlay.tsx
+    │   └── index.ts
+    └── sections/            # Page sections
+        ├── Hero.tsx
+        ├── Credentials.tsx
+        ├── RealityCheck.tsx
+        ├── Methodology.tsx
+        ├── CaseStudies.tsx
+        ├── Profile.tsx
+        ├── Honours.tsx
+        ├── FreeResource.tsx
+        ├── CTA.tsx
+        ├── Footer.tsx
+        └── index.ts
+```
+
 ## Key Features
 
 ### 1. The Blueprint Visualizer

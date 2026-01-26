@@ -1,0 +1,10 @@
+export { Hero } from './Hero';
+export { Credentials } from './Credentials';
+export { RealityCheck } from './RealityCheck';
+export { Methodology } from './Methodology';
+export { CaseStudies } from './CaseStudies';
+export { Profile } from './Profile';
+export { Honours } from './Honours';
+export { FreeResource } from './FreeResource';
+export { CTA } from './CTA';
+export { Footer } from './Footer';

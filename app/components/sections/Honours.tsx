@@ -1,0 +1,88 @@
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Section, RevealText } from '../shared';
+
+export const Honours = () => {
+    return (
+        <Section id="honours" className="bg-[#050505] py-20 relative overflow-hidden flex items-center justify-center">
+            {/* Dark Luxury Particles/Gradient */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(234,179,8,0.02),transparent_70%)]" />
+
+            <div className="max-w-7xl w-full mx-auto px-6 relative z-10 flex flex-col items-center">
+                <div className="text-center mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="flex items-center justify-center gap-4 mb-6"
+                    >
+                        <img src="/sri-logo.png" alt="SRI" className="h-4 md:h-5 w-auto object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-opacity duration-700" />
+                        <div className="h-px w-8 bg-white/10" />
+                        <span className="font-mono text-[8px] md:text-[10px] text-white/30 tracking-[0.3em] uppercase">Corporate Accreditation</span>
+                    </motion.div>
+
+                    <RevealText>
+                        <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight">
+                            No. 1 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Top Achiever at SRI.</span>
+                        </h2>
+                    </RevealText>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 w-full">
+                    {[
+                        { img: "/seals/millionaire-black.png", title: "Millionaire Achiever" },
+                        { img: "/seals/billion-black.png", title: "Billion Dollar Club" },
+                        { img: "/seals/top-black.png", title: "#01 Top Achiever" },
+                        { img: "/seals/transaction-black.png", title: "Largest Transaction" }
+                    ].map((award, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: idx * 0.1, duration: 0.8 }}
+                            className="flex flex-col items-center group relative"
+                        >
+                            {/* Rotating Gold Border Container */}
+                            <div className="relative w-36 h-36 md:w-48 md:h-48 mb-8 flex items-center justify-center">
+                                {/* Animated Outer Glow Ring */}
+                                <div className="absolute inset-[-4px] rounded-full bg-gradient-to-tr from-transparent via-yellow-600/40 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 animate-spin-slow" />
+
+                                {/* Rotating Border - Conic Gradient */}
+                                <div className="absolute inset-0 rounded-full p-[1px] bg-gradient-to-b from-white/10 to-transparent group-hover:p-[2px] transition-all duration-500 overflow-hidden">
+                                    <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_90deg,#EAB308_180deg,transparent_270deg)] opacity-0 group-hover:opacity-100 animate-spin-slow duration-700" style={{ animationDuration: '3s' }} />
+                                </div>
+
+                                {/* Inner Circle Background */}
+                                <div className="relative w-full h-full rounded-full bg-black border border-white/5 overflow-hidden group-hover:border-yellow-500/30 transition-colors duration-500 box-border z-10 p-1">
+
+                                    {/* Inner Glow Gradient */}
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(234,179,8,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                    {/* Image Container */}
+                                    <motion.div
+                                        whileHover={{ scale: 1.05 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="w-full h-full rounded-full overflow-hidden relative z-20 bg-black"
+                                    >
+                                        <img
+                                            src={award.img}
+                                            alt={award.title}
+                                            className="w-full h-full object-cover filter brightness-100 contrast-100 group-hover:brightness-110 group-hover:contrast-110 transition-all duration-500"
+                                        />
+                                        {/* Glass Sheen */}
+                                        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                    </motion.div>
+                                </div>
+                            </div>
+
+                            <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-yellow-500 transition-colors duration-500 text-center transform group-hover:translate-y-[-5px]">
+                                {award.title}
+                            </p>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </Section>
+    );
+};
