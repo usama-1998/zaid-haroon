@@ -78,7 +78,7 @@ export default function ContactWidget() {
             {/* WhatsApp Chat Window */}
             <div
                 className={`
-                    absolute bottom-20 right-0 w-80 sm:w-96 bg-[#E5DDD5] rounded-lg shadow-2xl overflow-hidden transform transition-all duration-300 origin-bottom-right
+                    absolute bottom-20 right-0 w-80 sm:w-96 bg-[#E5DDD5] rounded-lg shadow-2xl overflow-hidden transform transition-all duration-300 origin-bottom-right font-sans
                     ${isOpen ? 'scale-100 opacity-100 translate-y-0' : 'scale-95 opacity-0 translate-y-4 pointer-events-none'}
                 `}
             >
@@ -87,7 +87,7 @@ export default function ContactWidget() {
                     <div className="flex items-center space-x-3">
                         <div className="relative">
                             <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
-                                <img src="/whatsapdp.png" alt="Profile" className="w-full h-full object-cover" />
+                                <img src="/zaid-profile-gold.png" alt="Zaid" className="w-full h-full object-cover" />
                             </div>
                             <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-[#075E54] rounded-full"></div>
                         </div>
@@ -117,7 +117,7 @@ export default function ContactWidget() {
                     )}
 
                     {isMessageVisible && (
-                        <div className="bg-white rounded-lg rounded-tl-none p-3 shadow-sm self-start max-w-[85%] relative speech-bubble text-gray-800 text-sm animate-fade-in ml-2 font-sans">
+                        <div className="bg-white rounded-lg rounded-tl-none p-3 shadow-sm self-start max-w-[85%] relative speech-bubble text-gray-800 text-sm animate-fade-in ml-2">
                             <p className="mb-1">Hi there! 👋</p>
                             <p>How can I help you with your property journey today?</p>
                         </div>
