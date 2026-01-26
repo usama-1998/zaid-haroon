@@ -931,10 +931,10 @@ const Profile = () => {
                             {/* Award Strip - Integrated & Sleek */}
                             <div className="flex gap-4 md:gap-6 self-start md:self-auto py-4">
                                 {[
-                                    { img: "/award-millionaire.png", title: "Millionaire" },
-                                    { img: "/award-billion.png", title: "Billion $" },
-                                    { img: "/award-top.png", title: "#01 Top" },
-                                    { img: "/award-transaction.png", title: "Largest" }
+                                    { img: "/seals/millionaire-seal.png", title: "Millionaire" },
+                                    { img: "/seals/billion-seal.png", title: "Billion $" },
+                                    { img: "/seals/top-seal.png", title: "#01 Top" },
+                                    { img: "/seals/transaction-seal.png", title: "Largest" }
                                 ].map((award, idx) => (
                                     <motion.div
                                         key={idx}
@@ -944,13 +944,13 @@ const Profile = () => {
                                         whileHover={{ y: -10 }}
                                         className="group relative"
                                     >
-                                        <div className="w-16 h-16 md:w-20 md:h-20 relative px-1">
+                                        <div className="w-18 h-18 md:w-22 md:h-22 relative p-1 rounded-full overflow-hidden border border-white/5 bg-black/50">
                                             {/* Glow Effect */}
                                             <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 blur-xl transition-all duration-500 rounded-full" />
                                             <img
                                                 src={award.img}
                                                 alt={award.title}
-                                                className="w-full h-full object-contain filter brightness-110 contrast-110 opacity-80 group-hover:opacity-100 transition-all duration-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.3)]"
+                                                className="w-full h-full object-cover filter brightness-110 contrast-110 opacity-90 group-hover:opacity-100 transition-all duration-500"
                                             />
                                         </div>
                                         {/* Tooltip */}
