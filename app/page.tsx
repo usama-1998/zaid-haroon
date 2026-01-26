@@ -919,20 +919,30 @@ const Profile = () => {
                             <p>My clients aren't looking for a quick flip. They are looking for safety, growth, and a retirement that honors their years of hard work.</p>
                         </div>
 
-                        {/* Honours & Awards Grid */}
-                        <div className="grid grid-cols-2 gap-4 mb-12">
+                        {/* Honours & Awards Image Grid */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
                             {[
-                                { year: "2022/23/24", title: "SRI Millionaire Achiever" },
-                                { year: "2024", title: "SRI Billion Dollar Club" },
-                                { year: "2024", title: "#01 SRI Top Achiever" },
-                                { year: "2023", title: "Largest Transaction Award" }
+                                { img: "/award-millionaire.png", title: "SRI Millionaire Achiever" },
+                                { img: "/award-billion.png", title: "SRI Billion Dollar Club" },
+                                { img: "/award-top.png", title: "#01 SRI Top Achiever" },
+                                { img: "/award-transaction.png", title: "Largest Transaction Award" }
                             ].map((award, idx) => (
-                                <div key={idx} className="p-4 border border-white/5 bg-white/0 hover:bg-white/5 transition-colors group">
-                                    <span className="block font-mono text-[10px] text-yellow-500/60 mb-1">{award.year}</span>
-                                    <p className="text-xs font-bold uppercase tracking-widest text-white/80 group-hover:text-white transition-colors">
-                                        {award.title}
-                                    </p>
-                                </div>
+                                <motion.div
+                                    key={idx}
+                                    whileHover={{ scale: 1.05 }}
+                                    className="relative aspect-square border border-white/10 bg-black overflow-hidden group rounded-sm shadow-2xl"
+                                >
+                                    <img
+                                        src={award.img}
+                                        alt={award.title}
+                                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                                        <p className="text-[8px] font-bold uppercase tracking-widest text-white leading-tight">
+                                            {award.title}
+                                        </p>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
 
