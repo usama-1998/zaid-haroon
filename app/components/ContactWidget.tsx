@@ -83,25 +83,32 @@ export default function ContactWidget() {
                 `}
             >
                 {/* Header */}
-                <div className="bg-[#075E54] p-4 text-white flex items-center justify-between">
+                <div className="bg-[#075E54] p-4 text-white">
+                    <div className="flex justify-between items-start mb-4">
+                        <img src="/sri-logo.png" alt="SRI" className="h-4 w-auto object-contain brightness-0 invert opacity-90" />
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="text-white/80 hover:text-white transition-colors"
+                        >
+                            <X size={20} />
+                        </button>
+                    </div>
+
                     <div className="flex items-center space-x-3">
-                        <div className="relative">
-                            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
+                        <div className="relative flex-shrink-0">
+                            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center overflow-hidden border border-white/30">
                                 <img src="/support-profile.jpg" alt="Support" className="w-full h-full object-cover" />
                             </div>
                             <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-[#075E54] rounded-full"></div>
                         </div>
                         <div>
-                            <h3 className="font-semibold text-base leading-tight">Zaid's Assistant</h3>
-                            <p className="text-xs text-green-100 opacity-80">Replies within an hour</p>
+                            <h3 className="font-semibold text-base leading-tight">Zaid Haroon</h3>
+                            <p className="text-[10px] text-green-100 opacity-90 font-light leading-snug mt-0.5">
+                                Top 1% Wealth Architect <br />
+                                SRI Millionaire Achiever '22 / '23 / '24
+                            </p>
                         </div>
                     </div>
-                    <button
-                        onClick={() => setIsOpen(false)}
-                        className="text-white/80 hover:text-white transition-colors"
-                    >
-                        <X size={20} />
-                    </button>
                 </div>
 
                 {/* Body */}
