@@ -32,6 +32,12 @@ A full-width, infinite scrolling ticker of success stories.
 *   **Signature**: Bespoke signature watermark.
 *   **Architectural Grid**: Subtle animated backdrops.
 
+### 5. WhatsApp & Call Command Center
+A unified communication widget inspired by luxury concierge services.
+*   **Direct Access**: One-tap WhatsApp and Call integration.
+*   **Intelligent Greeting**: Simulated typing and automated welcome message.
+*   **Multi-Channel**: Supports Voice Call, FaceTime, and WhatsApp.
+
 ## Getting Started
 
 1.  **Install Dependencies**:
