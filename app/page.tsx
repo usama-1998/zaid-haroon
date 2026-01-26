@@ -925,71 +925,62 @@ const Profile = () => {
 
 const Honours = () => {
     return (
-        <Section id="honours" className="bg-[#050505] py-32 relative overflow-hidden flex items-center justify-center">
+        <Section id="honours" className="bg-[#050505] py-20 relative overflow-hidden flex items-center justify-center">
             {/* Dark Luxury Particles/Gradient */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(234,179,8,0.03),transparent_70%)]" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow-500/[0.02] rounded-full blur-[150px] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(234,179,8,0.02),transparent_70%)]" />
 
             <div className="max-w-7xl w-full mx-auto px-6 relative z-10 flex flex-col items-center">
-                <div className="text-center mb-24">
+                <div className="text-center mb-16">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        className="flex items-center justify-center gap-6 mb-10"
+                        className="flex items-center justify-center gap-4 mb-6"
                     >
-                        <div className="h-px w-16 bg-gradient-to-r from-transparent to-white/20" />
-                        <img src="/sri-logo.png" alt="SRI" className="h-6 md:h-8 w-auto object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-opacity duration-700" />
-                        <div className="h-px w-16 bg-gradient-to-l from-transparent to-white/20" />
+                        <img src="/sri-logo.png" alt="SRI" className="h-4 md:h-5 w-auto object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-opacity duration-700" />
+                        <div className="h-px w-8 bg-white/10" />
+                        <span className="font-mono text-[8px] md:text-[10px] text-white/30 tracking-[0.3em] uppercase">Corporate Accreditation</span>
                     </motion.div>
 
                     <RevealText>
-                        <h2 className="text-5xl md:text-8xl font-serif text-white mb-6 tracking-tight leading-none">
+                        <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight">
                             Institutional <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Excellence.</span>
                         </h2>
-                        <p className="font-mono text-[10px] md:text-xs text-yellow-500/40 uppercase tracking-[0.5em] mt-4">
-                            Corporate Accreditation & Performance Honours
-                        </p>
                     </RevealText>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-12 w-full">
+                <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 w-full">
                     {[
-                        { img: "/seals/millionaire-seal.png", title: "Millionaire Achiever", desc: "Recognized for consistent S$1M+ transaction excellence." },
-                        { img: "/seals/billion-seal.png", title: "Billion Dollar Club", desc: "Elite membership status within SRI's highest performance tier." },
-                        { img: "/seals/top-seal.png", title: "#01 Top Achiever", desc: "Historically proving strategy through unprecedented market results." },
-                        { img: "/seals/transaction-seal.png", title: "Largest Transaction", desc: "Mastering complex negotiations for Singapore's premier estates." }
+                        { img: "/seals/millionaire-seal.png", title: "Millionaire Achiever" },
+                        { img: "/seals/billion-seal.png", title: "Billion Dollar Club" },
+                        { img: "/seals/top-seal.png", title: "#01 Top Achiever" },
+                        { img: "/seals/transaction-seal.png", title: "Largest Transaction" }
                     ].map((award, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, y: 60 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: idx * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                            transition={{ delay: idx * 0.1, duration: 0.8 }}
                             className="flex flex-col items-center group"
                         >
-                            <div className="relative w-48 h-48 md:w-64 md:h-64 mb-10 perspective-1000">
-                                {/* Ambient Halo */}
-                                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 blur-[80px] transition-all duration-1000 rounded-full scale-125 opacity-0 group-hover:opacity-100" />
+                            <div className="relative w-32 h-32 md:w-44 md:h-44 mb-6 rounded-full overflow-hidden border border-white/5 bg-transparent">
+                                {/* Ambient Glow */}
+                                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 blur-[40px] transition-all duration-700 rounded-full scale-125 opacity-0 group-hover:opacity-100" />
 
                                 <motion.div
-                                    whileHover={{ rotateY: 10, rotateX: -5, scale: 1.1 }}
-                                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                                    whileHover={{ scale: 1.1 }}
                                     className="w-full h-full relative z-10"
                                 >
                                     <img
                                         src={award.img}
                                         alt={award.title}
-                                        className="w-full h-full object-contain mix-blend-lighten filter brightness-110 contrast-110 transition-all duration-700 drop-shadow-[0_0_40px_rgba(234,179,8,0.1)] group-hover:drop-shadow-[0_0_60px_rgba(234,179,8,0.25)]"
+                                        className="w-full h-full object-cover mix-blend-lighten filter brightness-110 contrast-110 transition-all duration-500"
                                     />
                                 </motion.div>
                             </div>
 
-                            <h4 className="text-xl md:text-2xl font-serif text-white mb-4 group-hover:text-yellow-500 transition-colors duration-500">
+                            <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-yellow-500 transition-colors duration-500 text-center">
                                 {award.title}
-                            </h4>
-                            <p className="text-[10px] md:text-xs font-light text-gray-500 leading-relaxed uppercase tracking-[0.2em] text-center max-w-[240px]">
-                                {award.desc}
                             </p>
-                            <div className="mt-8 h-px w-6 bg-yellow-500/20 group-hover:w-20 group-hover:bg-yellow-500 transition-all duration-700" />
                         </motion.div>
                     ))}
                 </div>
