@@ -919,39 +919,49 @@ const Profile = () => {
                             <p>My clients aren't looking for a quick flip. They are looking for safety, growth, and a retirement that honors their years of hard work.</p>
                         </div>
 
-                        {/* Honours & Awards Image Grid */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-                            {[
-                                { img: "/award-millionaire.png", title: "SRI Millionaire Achiever" },
-                                { img: "/award-billion.png", title: "SRI Billion Dollar Club" },
-                                { img: "/award-top.png", title: "#01 SRI Top Achiever" },
-                                { img: "/award-transaction.png", title: "Largest Transaction Award" }
-                            ].map((award, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    whileHover={{ scale: 1.05 }}
-                                    className="relative aspect-square border border-white/10 bg-black overflow-hidden group rounded-sm shadow-2xl"
-                                >
-                                    <img
-                                        src={award.img}
-                                        alt={award.title}
-                                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                                        <p className="text-[8px] font-bold uppercase tracking-widest text-white leading-tight">
-                                            {award.title}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Signature Block - New Font */}
-                        <div className="mt-8">
-                            <div className="font-signature text-6xl text-white/80 mb-2 transform -rotate-2 origin-left">
-                                Zaid Haroon
+                        {/* Signature Block & Award Strip - Reimagined */}
+                        <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8">
+                            <div>
+                                <div className="font-signature text-6xl text-white/80 mb-2 transform -rotate-2 origin-left">
+                                    Zaid Haroon
+                                </div>
+                                <p className="text-xs uppercase tracking-widest text-gray-500">Zaid Haroon • Senior Strategist</p>
                             </div>
-                            <p className="text-xs uppercase tracking-widest text-gray-500">Zaid Haroon • Senior Strategist</p>
+
+                            {/* Award Strip - Integrated & Sleek */}
+                            <div className="flex gap-4 md:gap-6 self-start md:self-auto py-4">
+                                {[
+                                    { img: "/award-millionaire.png", title: "Millionaire" },
+                                    { img: "/award-billion.png", title: "Billion $" },
+                                    { img: "/award-top.png", title: "#01 Top" },
+                                    { img: "/award-transaction.png", title: "Largest" }
+                                ].map((award, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3 + (idx * 0.1) }}
+                                        whileHover={{ y: -10 }}
+                                        className="group relative"
+                                    >
+                                        <div className="w-16 h-16 md:w-20 md:h-20 relative px-1">
+                                            {/* Glow Effect */}
+                                            <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 blur-xl transition-all duration-500 rounded-full" />
+                                            <img
+                                                src={award.img}
+                                                alt={award.title}
+                                                className="w-full h-full object-contain filter brightness-110 contrast-110 opacity-80 group-hover:opacity-100 transition-all duration-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.3)]"
+                                            />
+                                        </div>
+                                        {/* Tooltip */}
+                                        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 whitespace-nowrap z-30">
+                                            <span className="text-[7px] font-bold uppercase tracking-[0.2em] text-yellow-500 bg-black/90 px-3 py-1 border border-yellow-500/20 backdrop-blur-md rounded-full shadow-2xl">
+                                                {award.title}
+                                            </span>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
                     </RevealText>
                 </div>
