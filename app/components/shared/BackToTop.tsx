@@ -30,9 +30,9 @@ export const BackToTop = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-8 left-8 z-50 p-4 bg-yellow-500 text-black rounded-full shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-shadow border border-yellow-400"
+                    className="fixed bottom-8 left-8 z-50 p-3 bg-white/5 backdrop-blur-sm border border-white/10 text-white/50 hover:text-white hover:border-white/30 hover:bg-white/10 rounded-full transition-all duration-300 group"
                 >
-                    <ArrowUp className="w-5 h-5" />
+                    <ArrowUp className="w-4 h-4" />
                 </motion.button>
             )}
         </AnimatePresence>
