@@ -6,7 +6,7 @@ import { Section, RevealText } from '../shared';
 
 export const Profile = () => {
     return (
-        <Section id="profile" className="bg-[#080808] overflow-hidden py-32 min-h-[90vh] flex items-center justify-center relative">
+        <Section id="profile" className="bg-[#080808] overflow-hidden py-20 min-h-[70vh] flex items-center justify-center relative">
             {/* Background Texture */}
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none" />
 

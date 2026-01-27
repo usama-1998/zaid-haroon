@@ -61,7 +61,12 @@ A CSS-3D transformed book component.
 *   **True Depth**: Features realistic spine, covers, and page thickness.
 *   **Interactive**: Responds to mouse movement with parallax rotation.
 
-### 3. Case Studies Marquee
+### 3. UI Refinements
+*   **Centered Layouts**: Key sections like the Contact CTA are centered for maximum impact.
+*   **Navigation**: "Back to Top" button positioned for easy access without obstructing content.
+*   **Optimized Spacing**: Refined vertical rhythm for a tighter, more cohesive reading experience.
+
+### 4. Case Studies Marquee
 A full-width, infinite scrolling ticker of success stories.
 *   **Modal Interaction**: Clicking any case study opens a detailed "Declassified" mission file.
 

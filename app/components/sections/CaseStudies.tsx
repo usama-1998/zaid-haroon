@@ -62,14 +62,14 @@ export const CaseStudies = () => {
     const [selectedStudy, setSelectedStudy] = useState<typeof CASE_STUDIES[0] | null>(null);
 
     return (
-        <Section id="case-studies" className="bg-[#050505] min-h-[50vh] flex flex-col justify-center overflow-hidden py-24 border-y border-white/5 relative">
+        <Section id="case-studies" className="bg-[#050505] min-h-[50vh] flex flex-col justify-center overflow-hidden py-16 border-y border-white/5 relative">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none" />
 
             <div className="w-full relative z-10">
-                <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-16 text-center">
+                <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-16 text-left">
                     <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-4 block">Proven Results</span>
                     <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">Case Studies</h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto font-light">Real scenarios. Real numbers. The application of the blueprint in live market conditions.</p>
+                    <p className="text-gray-400 max-w-2xl font-light">Real scenarios. Real numbers. The application of the blueprint in live market conditions.</p>
                 </div>
 
                 <div className="flex w-full overflow-hidden mask-linear-fade relative">

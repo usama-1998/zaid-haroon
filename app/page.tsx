@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
 
 // Shared Components
-import { NoiseOverlay } from './components/shared';
+import { NoiseOverlay, BackToTop } from './components/shared';
 
 // Modals
 import { VideoModal, ContactModal, MenuOverlay } from './components/modals';
@@ -82,6 +82,8 @@ export default function App() {
             </main>
 
             <Footer />
+            <BackToTop />
         </div>
+
     );
 }

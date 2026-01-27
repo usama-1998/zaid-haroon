@@ -19,7 +19,7 @@ export const FreeResource = () => {
     const rotateY = useTransform(mouseX, [-0.5, 0.5], [10, 30]);
 
     return (
-        <Section id="resources" className="bg-[#111] overflow-hidden min-h-[90vh] py-24 flex items-center">
+        <Section id="resources" className="bg-[#111] overflow-hidden min-h-[90vh] py-16 flex items-center">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,215,0,0.03),transparent_70%)]" />
 
             <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center px-4">

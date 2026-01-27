@@ -6,7 +6,7 @@ import { Section, RevealText } from '../shared';
 
 export const Honours = () => {
     return (
-        <Section id="honours" className="bg-[#050505] py-20 relative flex items-center justify-center">
+        <Section id="honours" className="bg-[#050505] py-14 relative flex items-center justify-center">
             {/* Dark Luxury Particles/Gradient */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(234,179,8,0.02),transparent_70%)]" />
 

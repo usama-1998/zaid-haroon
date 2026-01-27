@@ -28,7 +28,7 @@ const StatMinimal = ({ value, label, delay }: { value: string, label: string, de
 
 export const CTA = ({ onOpenContact }: CTAProps) => {
     return (
-        <Section className="bg-[#050505] text-white min-h-[80vh] relative overflow-hidden flex items-center justify-center border-t border-white/10">
+        <Section className="bg-[#050505] text-white py-24 relative overflow-hidden flex items-center justify-center border-t border-white/10">
             {/* Background Image - Similar to Hero */}
             <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1485628390568-3737df57b5a8?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-20" />
 
@@ -43,7 +43,7 @@ export const CTA = ({ onOpenContact }: CTAProps) => {
                 Zaid Haroon
             </div>
 
-            <div className="relative z-20 w-full max-w-5xl text-center p-12 md:p-20 border border-white/5 bg-black/50 backdrop-blur-sm rounded-sm">
+            <div className="relative z-20 w-full max-w-7xl mx-auto text-center p-12 md:p-20 border border-white/5 bg-black/50 backdrop-blur-sm rounded-sm flex flex-col items-center">
                 {/* Stats Row - Above Title */}
                 <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-10">
                     <StatMinimal value="#01" label="SRI Top Achiever" delay={0} />

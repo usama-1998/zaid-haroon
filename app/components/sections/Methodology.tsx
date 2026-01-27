@@ -56,7 +56,7 @@ export const Methodology = ({ onOpenContact }: MethodologyProps) => {
     const [activeStep, setActiveStep] = useState(0);
 
     return (
-        <Section id="blueprint" className="bg-[#050505] min-h-screen py-32 overflow-hidden">
+        <Section id="blueprint" className="bg-[#050505] py-24 overflow-hidden">
             {/* Animated Radar Grid */}
             <div className="absolute inset-0 z-0 opacity-20 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem]" />
 
