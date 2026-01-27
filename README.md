@@ -64,7 +64,7 @@ A CSS-3D transformed book component.
 ### 3. UI Refinements
 *   **Centered Layouts**: Key sections like the Contact CTA are centered for maximum impact.
 *   **Navigation**: "Back to Top" button positioned for easy access without obstructing content.
-*   **Optimized Spacing**: Refined vertical rhythm for a tighter, more cohesive reading experience.
+*   **Optimized Spacing**: Refined vertical rhythm for a tighter, more cohesive reading experience, specifically improving the flow between Bio, Awards, and Call-to-Action sections.
 
 ### 4. Case Studies Marquee
 A full-width, infinite scrolling ticker of success stories.

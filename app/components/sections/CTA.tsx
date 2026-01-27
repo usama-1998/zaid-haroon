@@ -54,10 +54,10 @@ export const CTA = ({ onOpenContact }: CTAProps) => {
                 </div>
 
                 <RevealText>
-                    <h2 className="text-5xl md:text-8xl font-serif mb-8 tracking-tight text-white mix-blend-difference drop-shadow-2xl">
+                    <h2 className="text-5xl md:text-8xl font-serif mb-4 tracking-tight text-white mix-blend-difference drop-shadow-2xl">
                         Begin Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 italic">Legacy.</span>
                     </h2>
-                    <p className="text-gray-400 mb-12 leading-relaxed max-w-xl mx-auto font-light text-lg">
+                    <p className="text-gray-400 mb-6 leading-relaxed max-w-xl mx-auto font-light text-lg">
                         The window of opportunity in Singapore real estate is narrow. Strategy is the only leverage. Let's build your $2M roadmap.
                     </p>
 
