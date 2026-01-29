@@ -13,8 +13,8 @@ export default function ContactWidget() {
     const hasOpened = useRef(false);
 
     // Hardcoded phone number for now - replace with actual number
-    const PHONE_NUMBER = "6583397710"; // Default number
-    const PHONE_DISPLAY = "+65 8339 7710";
+    const PHONE_NUMBER = "6581331070"; // Default number
+    const PHONE_DISPLAY = "+65 8133 1070";
 
     useEffect(() => {
         setIsMounted(true);
@@ -93,7 +93,7 @@ export default function ContactWidget() {
                                 <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-[#075E54] rounded-full"></div>
                             </div>
                             <div>
-                                <h3 className="font-semibold text-base leading-tight">Zaid's Assistant</h3>
+                                <h3 className="font-semibold text-base leading-tight">Zaid Haroon</h3>
                             </div>
                         </div>
                         <button

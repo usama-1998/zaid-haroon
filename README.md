@@ -77,7 +77,7 @@ A full-width, infinite scrolling ticker of success stories.
 
 ### 5. WhatsApp & Call Command Center
 A unified communication widget inspired by luxury concierge services.
-*   **Direct Access**: One-tap WhatsApp and Call integration.
+*   **Direct Access**: One-tap WhatsApp and Call integration to reach Zaid Haroon (+65 8133 1070).
 *   **Intelligent Greeting**: Simulated typing and automated welcome message.
 *   **Multi-Channel**: Supports Voice Call, FaceTime, and WhatsApp.
 
