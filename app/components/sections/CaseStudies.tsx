@@ -156,7 +156,7 @@ export const CaseStudies = ({ onOpenContact }: CaseStudiesProps) => {
                 </div>
             </div>
 
-            <CaseStudyModal isOpen={!!selectedStudy} onClose={() => setSelectedStudy(null)} data={selectedStudy} />
+            <CaseStudyModal isOpen={!!selectedStudy} onClose={() => setSelectedStudy(null)} onOpenContact={onOpenContact} data={selectedStudy} />
         </Section>
     );
 };

@@ -17,10 +17,11 @@ interface CaseStudyData {
 interface CaseStudyModalProps {
     isOpen: boolean;
     onClose: () => void;
+    onOpenContact: () => void;
     data: CaseStudyData | null;
 }
 
-export const CaseStudyModal = ({ isOpen, onClose, data }: CaseStudyModalProps) => (
+export const CaseStudyModal = ({ isOpen, onClose, onOpenContact, data }: CaseStudyModalProps) => (
     <AnimatePresence>
         {isOpen && data && (
             <motion.div
@@ -71,7 +72,7 @@ export const CaseStudyModal = ({ isOpen, onClose, data }: CaseStudyModalProps) =
                             </div>
 
                             <div className="pt-8 border-t border-white/10">
-                                <PremiumButton onClick={onClose} className="w-full text-xs">Apply for Consultation</PremiumButton>
+                                <PremiumButton onClick={() => { onClose(); onOpenContact(); }} className="w-full text-xs">Apply for Consultation</PremiumButton>
                             </div>
                         </div>
                     </div>
