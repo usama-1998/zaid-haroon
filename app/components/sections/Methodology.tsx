@@ -191,7 +191,7 @@ export const Methodology = ({ onOpenContact }: MethodologyProps) => {
                         transition={{ delay: 0.5 }}
                         className="mt-8"
                     >
-                        <PremiumButton onClick={onOpenContact}>Apply for Strategy Session</PremiumButton>
+                        <PremiumButton onClick={onOpenContact}>Apply for Consultation</PremiumButton>
                     </motion.div>
                 </div>
             </div >

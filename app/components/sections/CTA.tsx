@@ -63,7 +63,7 @@ export const CTA = ({ onOpenContact }: CTAProps) => {
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                         <PremiumButton onClick={onOpenContact} className="px-12 py-6 text-base w-full md:w-auto">
-                            Apply for Strategy Session <ArrowRight className="w-5 h-5" />
+                            Apply for Consultation <ArrowRight className="w-5 h-5" />
                         </PremiumButton>
                         <span className="text-xs text-gray-500 font-mono uppercase tracking-widest">or WhatsApp Direct</span>
                     </div>
