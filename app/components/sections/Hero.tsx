@@ -71,7 +71,7 @@ export const Hero = ({ onOpenVideo, onOpenContact }: HeroProps) => {
 
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col md:flex-row items-center gap-6">
                     <PremiumButton onClick={onOpenContact}>
-                        Start Consultation
+                        Apply for Consultation
                     </PremiumButton>
 
                     <button onClick={onOpenVideo} className="flex items-center gap-3 group px-4 py-2 border border-transparent hover:border-white/10 rounded-full transition-all">

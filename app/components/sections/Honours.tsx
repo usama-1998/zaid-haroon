@@ -2,9 +2,13 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Section, RevealText } from '../shared';
+import { Section, RevealText, PremiumButton } from '../shared';
 
-export const Honours = () => {
+interface HonoursProps {
+    onOpenContact: () => void;
+}
+
+export const Honours = ({ onOpenContact }: HonoursProps) => {
     return (
         <Section id="honours" className="bg-[#050505] py-8 relative flex items-center justify-center">
             {/* Dark Luxury Particles/Gradient */}
@@ -22,7 +26,7 @@ export const Honours = () => {
                     </RevealText>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 w-full">
+                <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 w-full mb-16">
                     {[
                         { img: "/seals/award img 1.webp", title: "SRI Billion Dollar Club" },
                         { img: "/seals/award img 2.webp", title: "SRI Millionaire Achiever" },
@@ -68,6 +72,10 @@ export const Honours = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                <PremiumButton onClick={onOpenContact}>
+                    Apply for Consultation
+                </PremiumButton>
             </div>
         </Section>
     );

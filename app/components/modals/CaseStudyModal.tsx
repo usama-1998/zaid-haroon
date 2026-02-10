@@ -71,7 +71,7 @@ export const CaseStudyModal = ({ isOpen, onClose, data }: CaseStudyModalProps) =
                             </div>
 
                             <div className="pt-8 border-t border-white/10">
-                                <PremiumButton onClick={onClose} className="w-full text-xs">Analyze Similar Cases</PremiumButton>
+                                <PremiumButton onClick={onClose} className="w-full text-xs">Apply for Consultation</PremiumButton>
                             </div>
                         </div>
                     </div>

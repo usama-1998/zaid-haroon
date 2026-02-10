@@ -1,0 +1,29 @@
+/* Custom styles for react-phone-number-input to match dark theme */
+.smart-phone-input .PhoneInputCountry {
+    padding-left: 12px;
+    padding-right: 8px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.smart-phone-input .PhoneInputCountrySelect {
+    background: #0a0a0a;
+    color: white;
+}
+
+.smart-phone-input .PhoneInputCountryIcon {
+    opacity: 0.8;
+}
+
+.smart-phone-input .PhoneInputInput {
+    background: transparent;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 12px 16px;
+    width: 100%;
+}
+
+.smart-phone-input input::placeholder {
+    color: #4b5563; /* gray-600 */
+}

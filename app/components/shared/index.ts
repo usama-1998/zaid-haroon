@@ -1,6 +1,7 @@
 export { NoiseOverlay } from './NoiseOverlay';
 export { GridBackground } from './GridBackground';
 export { RevealText } from './RevealText';
+export * from './SmartPhoneInput';
 export * from './BackToTop';
 
 export { PremiumButton } from './PremiumButton';

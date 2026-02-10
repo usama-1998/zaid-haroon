@@ -75,11 +75,14 @@ A full-width, infinite scrolling ticker of success stories.
 *   **Signature**: Bespoke signature watermark.
 *   **Architectural Grid**: Subtle animated backdrops.
 
-### 5. WhatsApp & Call Command Center
-A unified communication widget inspired by luxury concierge services.
-*   **Direct Access**: One-tap WhatsApp and Call integration to reach Zaid Haroon (+65 8133 1070).
-*   **Intelligent Greeting**: Simulated typing and automated welcome message.
-*   **Multi-Channel**: Supports Voice Call, FaceTime, and WhatsApp.
+### 5. Smart Application Ecosystem
+*   **Global Access**: "Apply for Consultation" buttons strategically placed in every section.
+*   **Intelligent Form**: 
+    *   **Auto-Location**: Detects user country via IP for smart phone input formatting.
+    *   **Qualifier Fields**: "Budget" and "Profile" segmentation for high-intent lead filtering.
+*   **WhatsApp & Call Command Center**: A unified communication widget inspired by luxury concierge services (Auto-open disabled for non-intrusive experience).
+    *   **Direct Access**: One-tap WhatsApp and Call integration to reach Zaid Haroon (+65 8133 1070).
+    *   **Multi-Channel**: Supports Voice Call, FaceTime, and WhatsApp.
 
 ## Getting Started
 

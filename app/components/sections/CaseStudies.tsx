@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { Section } from '../shared';
+import { Section, PremiumButton } from '../shared';
 import { CaseStudyModal } from '../modals';
 
 const CASE_STUDIES = [
@@ -57,7 +57,11 @@ const CASE_STUDIES = [
     },
 ];
 
-export const CaseStudies = () => {
+interface CaseStudiesProps {
+    onOpenContact: () => void;
+}
+
+export const CaseStudies = ({ onOpenContact }: CaseStudiesProps) => {
     const marqueeItems = [...CASE_STUDIES, ...CASE_STUDIES, ...CASE_STUDIES];
     const [selectedStudy, setSelectedStudy] = useState<typeof CASE_STUDIES[0] | null>(null);
 
@@ -65,14 +69,14 @@ export const CaseStudies = () => {
         <Section id="case-studies" className="bg-[#050505] min-h-[50vh] flex flex-col justify-center overflow-hidden py-16 border-y border-white/5 relative">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none" />
 
-            <div className="w-full relative z-10">
+            <div className="w-full relative z-10 flex flex-col items-center">
                 <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-16 text-left">
                     <span className="text-yellow-500 font-mono text-xs uppercase tracking-widest mb-4 block">Proven Results</span>
                     <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">Case Studies</h2>
                     <p className="text-gray-400 max-w-2xl font-light">Real scenarios. Real numbers. The application of the blueprint in live market conditions.</p>
                 </div>
 
-                <div className="flex w-full overflow-hidden mask-linear-fade relative">
+                <div className="flex w-full overflow-hidden mask-linear-fade relative mb-12">
                     <motion.div
                         className="flex gap-8 px-4 relative"
                         animate={{ x: ["0%", "-33.33%"] }}
@@ -143,6 +147,12 @@ export const CaseStudies = () => {
                             </div>
                         ))}
                     </motion.div>
+                </div>
+
+                <div className="relative z-20">
+                    <PremiumButton onClick={onOpenContact}>
+                        Apply for Case Study Review
+                    </PremiumButton>
                 </div>
             </div>
 

@@ -61,7 +61,7 @@ export default function App() {
                 {/* Right Actions */}
                 <div className="flex items-center pointer-events-auto">
                     <button onClick={() => setIsContactOpen(true)} className="hidden md:block text-[10px] font-bold uppercase tracking-widest border border-white/20 bg-white/5 hover:bg-white hover:text-black backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-300">
-                        Book Consultation
+                        Apply for Consultation
                     </button>
 
                     {/* Mobile Menu Button */}
@@ -73,10 +73,10 @@ export default function App() {
 
             <main>
                 <Hero onOpenVideo={() => setIsVideoOpen(true)} onOpenContact={() => setIsContactOpen(true)} />
-                <Honours />
-                <Profile />
+                <Honours onOpenContact={() => setIsContactOpen(true)} />
+                <Profile onOpenContact={() => setIsContactOpen(true)} />
                 <Methodology onOpenContact={() => setIsContactOpen(true)} />
-                <CaseStudies />
+                <CaseStudies onOpenContact={() => setIsContactOpen(true)} />
                 <FreeResource />
                 <CTA onOpenContact={() => setIsContactOpen(true)} />
             </main>

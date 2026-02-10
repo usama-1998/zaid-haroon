@@ -41,7 +41,7 @@ export const MenuOverlay = ({ isOpen, onClose, onOpenContact }: MenuOverlayProps
                         className="mt-8"
                     >
                         <PremiumButton onClick={() => { onClose(); onOpenContact(); }} variant="secondary">
-                            Book Consultation
+                            Apply for Consultation
                         </PremiumButton>
                     </motion.div>
                 </nav>

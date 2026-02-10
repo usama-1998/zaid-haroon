@@ -19,13 +19,13 @@ export default function ContactWidget() {
     useEffect(() => {
         setIsMounted(true);
 
-        // Auto-open logic
-        const timer = setTimeout(() => {
-            if (!hasOpened.current) {
-                setIsOpen(true);
-                hasOpened.current = true;
-            }
-        }, 1500);
+        // Auto-open logic - Disabled
+        // const timer = setTimeout(() => {
+        //     if (!hasOpened.current) {
+        //         setIsOpen(true);
+        //         hasOpened.current = true;
+        //     }
+        // }, 1500);
 
         // Close on click outside
         const handleClickOutside = (event: MouseEvent) => {
@@ -38,7 +38,7 @@ export default function ContactWidget() {
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
-            clearTimeout(timer);
+            // clearTimeout(timer);
         };
     }, []);
 

@@ -2,9 +2,13 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Section, RevealText } from '../shared';
+import { PremiumButton, Section, RevealText } from '../shared';
 
-export const Profile = () => {
+interface ProfileProps {
+    onOpenContact: () => void;
+}
+
+export const Profile = ({ onOpenContact }: ProfileProps) => {
     return (
         <Section id="profile" className="bg-[#080808] overflow-hidden py-8 min-h-[70vh] flex items-center justify-center relative">
             {/* Background Texture */}
@@ -45,6 +49,10 @@ export const Profile = () => {
                             <p>Being the first Muslim to hit #1 at SRI wasn't about the accolades. It was about proving that <span className="text-white italic">Tawakkul</span> (Trust in God) paired with relentless, ethical strategy wins in any market.</p>
                             <p>My clients aren't looking for a quick flip. They are looking for safety, growth, and a retirement that honors their years of hard work.</p>
                         </div>
+
+                        <PremiumButton onClick={onOpenContact}>
+                            Apply for Consultation
+                        </PremiumButton>
                     </RevealText>
                 </div>
             </div>
