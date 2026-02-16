@@ -9,6 +9,7 @@ A highly bespoke, premium real estate portfolio management landing page built fo
 *   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 *   **Animations**: [Framer Motion](https://www.framer.com/motion/)
 *   **Icons**: [Lucide React](https://lucide.dev/)
+*   **Analytics**: Meta Pixel
 
 ## Project Structure
 
